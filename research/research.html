@@ -20,28 +20,30 @@
 
 <title>Amber Su - Research</title>
 
-<link rel="stylesheet" href="../assets/main.css">
+  <link rel="stylesheet" href="../assets/main.css">
 
-<style>
-  .publication{
-    margin-top: 2em;
-    color:#131313;
-    font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
-    }
+  <script src="../assets/main.js" defer></script>
 
-    .publication_item{
-        margin-top: 3em;
-    }
+  <style>
+    .publication{
+      margin-top: 2em;
+      color:#131313;
+      font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
+      }
 
-    .publication_item a{
-        color: #131313;
-    }
+      .publication_item{
+          margin-top: 3em;
+      }
 
-    .project_item{
-        margin-bottom: 3em;
-    }
+      .publication_item a{
+          color: #131313;
+      }
 
-</style>
+      .project_item{
+          margin-bottom: 3em;
+      }
+
+  </style>
 
   </head>
 
@@ -98,6 +100,14 @@
              
             </div>
 
+            <div id="expandedSection1" class="expanded-section" style="display: none;">
+              <h3>Project Details</h3>
+              <p>
+                To be coming.
+              </p>
+            </div>
+    
+
 
               <div class = "project_item">
                 <div class = "project_text">
@@ -109,6 +119,13 @@
                 </div>
                 <div class = "project_buttom"> <button class ="learnmore" id="open2">Learn More</button> </div>
               
+            </div>
+
+            <div id="expandedSection2" class="expanded-section" style="display: none;">
+              <h3>Project Details</h3>
+              <p>
+                To be coming.
+              </p>
             </div>
 
             <div class = "project_item">
@@ -123,6 +140,13 @@
             
           </div>
 
+          <div id="expandedSection3" class="expanded-section" style="display: none;">
+            <h3>Project Details</h3>
+            <p>
+              To be coming.
+            </p>
+          </div>
+
             <div class = "project_item">
               <div class = "project_text">
                 <h3>
@@ -134,38 +158,33 @@
               <div class = "project_buttom"> <button class ="learnmore" id="open4">Learn More</button> </div>
             </div>
 
+            <div id="expandedSection4" class="expanded-section" style="display: none;">
+              <h3>Project Details</h3>
+              <p>
+                
+                This research focuses on three key aspects: developing custom scripts to integrate hourly simulated CFD wind 
+                from prevailing wind directions into outdoor thermal comfort analysis, incorporating simulated shortwave radiation 
+                into indoor thermal comfort calculations to better reflect localized radiative conditions compared to the uniform diffuse and reflective 
+                assumptions in ASHRAE, and creating a dynamic thermal sensation model to assess occupants' comfort under transient conditions.
+
+              </p>
+              <div class="gallery-container">
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <div class="image-container">
+                  <img class="gallery-slide" src="./assets/thermalcomfort1.jpg" alt="Thermal Comfort Dev" style="display: block;">
+                  <img class="gallery-slide" src="./assets/thermalcomfort2.jpg" alt="Thermal Comfort Dev" style="display: none;">
+                  <img class="gallery-slide" src="./assets/thermalcomfort3.jpg" alt="Thermal Comfort Dev" style="display: none;">
+                </div>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+              </div>
+            </div>
+
 
       
           </div>
         </div>
 
-        <div id="popup1" class="popup">
-          <div class="pop-content">
-              <span class="close">&times;</span>
-              <p>Detailed description of the project. This project focuses on detecting windows in urban buildings using advanced machine learning and computer vision techniques to improve the accuracy of building geometry reconstruction. The project is led by Amber as part of the Environmental Systems Lab at Cornell University.</p>
-          </div>
-        </div>
 
-        <div id="popup2" class="popup">
-          <div class="pop-content">
-              <span class="close">&times;</span>
-              <p>Detailed description of the project. This project focuses on detecting windows in urban buildings using advanced machine learning and computer vision techniques to improve the accuracy of building geometry reconstruction. The project is led by Amber as part of the Environmental Systems Lab at Cornell University.</p>
-          </div>
-        </div>
-        
-        <div id="popup3" class="popup">
-          <div class="pop-content">
-              <span class="close">&times;</span>
-              <p>Detailed description of the project. This project focuses on detecting windows in urban buildings using advanced machine learning and computer vision techniques to improve the accuracy of building geometry reconstruction. The project is led by Amber as part of the Environmental Systems Lab at Cornell University.</p>
-          </div>
-        </div>
-
-        <div id="popup4" class="popup">
-          <div class="pop-content">
-              <span class="close">&times;</span>
-              <p>Detailed description of the project. This project focuses on detecting windows in urban buildings using advanced machine learning and computer vision techniques to improve the accuracy of building geometry reconstruction. The project is led by Amber as part of the Environmental Systems Lab at Cornell University.</p>
-          </div>
-        </div>
 
         <div class = "page_block">
           <h2>
@@ -259,40 +278,34 @@
       </footer>
     </div>
 
-    <script>
+    <script id="showDropDown">
 
-      const modelfunc = function(index){
-        var model = document.getElementById("popup" + index);
-        var btn = document.getElementById("open" + index);
-        var span = model.getElementsByClassName("close")[0];
+    const modelfunc = function(index){
+      var section = document.getElementById("expandedSection" + index);
+      var btn = document.getElementById("open" + index);
 
-        btn.onclick = function() {
-          model.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-          model.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == model) {
-            model.style.display = "none";
+      btn.onclick = function() {
+          if (section.style.display === "none") {
+            section.style.display = "block";
+          } else {
+            section.style.display = "none";
           }
         }
-
       }
 
-      const range = Array.from({ length: 4 }, (v, i) => i + 1);
+      
+        const range = Array.from({ length: 4 }, (v, i) => i + 1);
 
-      range.forEach(number => {
-        modelfunc(number);
-      });
+        range.forEach(number => {
+          modelfunc(number);
+        });
 
-      modelfunc(1);
+
+    //modelfunc();
 
     </script>
+
+
     
 
 

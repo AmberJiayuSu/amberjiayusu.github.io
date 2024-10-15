@@ -4,7 +4,7 @@
   <head>
     
 
-<meta charset="utf-8">
+    <meta charset="utf-8">
 
 
 
@@ -12,9 +12,67 @@
 
 
 
-<title>Amber Su - Research</title>
+    <title>Amber Su - Research</title>
 
-<link rel="stylesheet" href="../assets/main.css">
+    <link rel="stylesheet" href="../assets/main.css">
+
+    <script src="../assets/main.js" defer></script>
+
+    <style>
+      .image-list-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .image-list-subcontainer {
+        width: 100%;
+        max-width: 1280px;
+        margin: 20px 0;
+      }
+
+      .image-item {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .image-item img {
+        width: 100%;
+        aspect-ratio: 3 / 1;
+        object-fit: cover;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+      }
+
+      .image-item:hover img {
+        opacity: 0.1;
+      }
+
+      .image-item:onclick img {
+        opacity: 0.8;
+      }
+
+      .image-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        pointer-events: none;
+      }
+
+      .dropdown-content {
+        display: none;
+        width: 100%;
+        max-width: 1280px;
+        border-top: 1px solid #ddd;
+        margin-top: 3em;
+      }
+      </style>
 
   </head>
 
@@ -49,15 +107,48 @@
   
         <div class = "page_header">
             <header>
-                <h1 class="page_title" itemprop="headline">TO BE UPDATED</h1>
+                <h1 class="page_title" itemprop="headline">Design</h1>
         
                     
             </header>
         </div>
 
-        <h2>
+        <div class = "page_block">
+          <div class="image-list-container">
+            <div class="image-list-subcontainer">
+              <!-- Image and text -->
+              <div class="image-item">
+                <img src="./assets/1-500-SITEPLAN.jpg" alt="Image 1" onclick="toggleDropdown(1)">
+                <div class="image-text">On Land</div>
+              </div>
+  
+              <!-- Dropdown content (separated) -->
+              <div id="dropdown1" class="dropdown-content" style="display: none;">
+                <h3>
+                  On Land
+                  </h3>
+                  <p>2023, Spring - Arch3102_Architecture of Relation<br>
+                    In Collaboration with Curtis Xu <br>
+                    Advisor: Tao DuFour</p>
+                <div class="gallery-container">
+                  <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                  <div class="image-container">
+                    <img class="gallery-slide" src="./assets/onland1.jpg" alt="Thermal Comfort Dev" style="display: block;">
+                    <img class="gallery-slide" src="./assets/onland2.jpg" alt="Thermal Comfort Dev" style="display: none;">
+                    <img class="gallery-slide" src="./assets/onland3.jpg" alt="Thermal Comfort Dev" style="display: none;">
+                  </div>
+                  <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        </h2>
+           
+
+          </div>
+      
+        </div>
             
     </div>
 
@@ -89,6 +180,17 @@
       </footer>
     </div>
     
+    <script>
+      function toggleDropdown(index) {
+        const dropdown = document.getElementById('dropdown' + index);
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+          dropdown.style.display = "block";  // Show the dropdown
+        } else {
+          dropdown.style.display = "none";   // Hide the dropdown
+        }
+      }
+
+    </script>
 
 
 

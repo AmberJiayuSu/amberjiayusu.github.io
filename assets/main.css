@@ -57,9 +57,10 @@ p{
 }
 
 .page_main{
-    max-width: 80%;
-    margin-left: 20%;
-    margin-right: 20%;
+    width: 70%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 6em;
     margin-bottom: 4em;
     font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
@@ -95,6 +96,7 @@ p{
     font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
     color: #484848;
     height: 150px;
+    z-index: 2;
 }
 
 .page_footerlink ul{
@@ -150,29 +152,11 @@ button.learnmore {
 
 
 
-.popup {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.1); 
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-
-.pop-content {
-    background-color:white; 
-    margin: 15% auto;
-    padding: 40px;
-    width: 80%;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+.expanded-section {
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+  }
 
 /* Close Button (X) */
 .close {
@@ -188,3 +172,54 @@ button.learnmore {
     text-decoration: none;
     cursor: pointer;
 }
+
+.gallery-container {
+    position: relative;
+    width: 90%;
+    max-width: 1280px;
+    margin: auto;
+    margin-top: 4em;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .gallery-slide {
+    width: 100%;
+    display: none;
+  }
+  
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 7px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 0;
+    z-index: 1;
+  }
+
+  .prev {
+    left: 0;
+  }
+  
+  .next {
+    right: 0;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
