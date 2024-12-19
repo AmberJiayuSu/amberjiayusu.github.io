@@ -43,6 +43,31 @@
           margin-bottom: 3em;
       }
 
+      .expanded-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+      }
+
+      .close-btn {
+        border: none;
+        background-color: transparent;
+        color: black;
+        font-size: 2rem;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .close-btn:hover {
+        background-color: #c9c9c9;
+      }
+
   </style>
 
   </head>
@@ -146,7 +171,12 @@
             </div>
 
             <div id="expandedSection4" class="expanded-section" style="display: none;">
-              <h3>Project Details</h3>
+              <div class = "expanded-header">
+                <h3>Project Details</h3>
+                <button class="close-btn" onclick="closeSection('expandedSection4')">&times;</button>
+              </div>
+                
+              
               <p>
                 
                 This research focuses on three key aspects: developing custom scripts to integrate hourly simulated CFD wind 
@@ -157,18 +187,16 @@
 
                 <p>
                 Currently, we are working on expanding the research to explore the applications of this analysis in design practice and explore the potential of other multi-node thermoregulatory heat balance and transient thermal comfort model.
-
-
-
               </p>
+
               <div class="gallery-container">
-                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
                 <div class="image-container">
                   <img class="gallery-slide" src="./assets/thermalcomfort1.jpg" alt="Thermal Comfort Dev" style="display: block;">
                   <img class="gallery-slide" src="./assets/thermalcomfort2.jpg" alt="Thermal Comfort Dev" style="display: none;">
                   <img class="gallery-slide" src="./assets/thermalcomfort3.jpg" alt="Thermal Comfort Dev" style="display: none;">
                 </div>
-                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
               </div>
             </div>
 
@@ -285,13 +313,18 @@
     
       <div class="page_footer-copyright">
         &copy; 2024 Amber Su<br />
-        Site last updated 2024-09-28
+        Site last updated 2024-12-18
       </div>
     
       </footer>
     </div>
 
     <script id="showDropDown">
+
+    function closeSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.style.display = 'none';
+    }
 
     const modelfunc = function(index){
       var section = document.getElementById("expandedSection" + index);

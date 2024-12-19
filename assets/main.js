@@ -1,21 +1,19 @@
 
-let currentSlide = 0;
+function changeSlide(direction, button) {
 
-function changeSlide(direction) {
-  const slides = document.querySelectorAll('.gallery-slide');
-  slides[currentSlide].style.display = "none"; 
+  const carousel = button.closest('.gallery-container');
+  
+  const slides = carousel.querySelectorAll('.gallery-slide');
+  const totalSlides = slides.length;
 
-  currentSlide += direction;
+  let currentSlideIndex = Array.from(slides).findIndex(slide => slide.style.display === "block");
 
-  if (currentSlide >= slides.length) {
-    currentSlide = 0;
-  }
+  slides[currentSlideIndex].style.display = "none";
 
-  if (currentSlide < 0) {
-    currentSlide = slides.length - 1;
-  }
 
-  slides[currentSlide].style.display = "block";
+  currentSlideIndex = (currentSlideIndex + direction + totalSlides) % totalSlides;
+
+  slides[currentSlideIndex].style.display = "block";
 }
 
 
