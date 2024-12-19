@@ -91,7 +91,6 @@ p{
 .page_footer {
     background-color: white;
     border-top: 0.5px solid #484848;
-    position: fixed;
     bottom: 0;
     width: 100%;
     font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;

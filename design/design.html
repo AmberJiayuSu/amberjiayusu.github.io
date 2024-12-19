@@ -157,7 +157,7 @@
                   <h3>On Land</h3>
                   <button class="close-btn" onclick="closeSection('dropdown1')">&times;</button>
                 </div>
-                  <p>2023, Spring - Arch3102_Architecture of Relation<br>
+                  <p>2023 Spring - Arch3102_Architecture of Relation<br>
                     In Collaboration with Curtis Xu <br>
                     Advisor: Tao DuFour</p>
                 <div class="gallery-container">
@@ -174,7 +174,7 @@
 
               <!-- Image and text -->
               <div class="image-item">
-                <img src="./assets/render11.png"  onclick="toggleDropdown(2)">
+                <img src="./assets/render11.jpg"  onclick="toggleDropdown(2)">
                 <div class="image-text">Down the Road</div>
               </div>
   
@@ -184,7 +184,7 @@
                   <h3>Down the Road</h3>
                   <button class="close-btn" onclick="closeSection('dropdown2')">&times;</button>
                 </div>
-                  <p>2023, Spring - Arch3102_Architecture of Relation<br>
+                  <p>2023 Spring - Arch4102_Close to Home<br>
                     In Collaboration with Curtis Xu <br>
                     Advisor: Emma Silverblatt</p>
                 <div class="gallery-container">
@@ -194,6 +194,31 @@
                     <img class="gallery-slide" src="./assets/DR2.jpg" style="display: none;">
                     <img class="gallery-slide" src="./assets/DR3.jpg" style="display: none;">
                     <img class="gallery-slide" src="./assets/DR4.jpg" style="display: none;">
+                  </div>
+                  <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
+                </div>
+              </div>
+
+
+
+              <div class="image-item">
+                <img src="./assets/cornerhousephoto.jpg"  onclick="toggleDropdown(3)">
+                <div class="image-text">Turning the Corner</div>
+              </div>
+  
+              <!-- Dropdown content (separated) -->
+              <div id="dropdown3" class="dropdown-content" style="display: none;">
+                <div class = "expanded-header">
+                  <h3>Turning the Corner</h3>
+                  <button class="close-btn" onclick="closeSection('dropdown3')">&times;</button>
+                </div>
+                  <p>2021 Fall - Arch2101<br>
+                    Advisor: Kana Arioka</p>
+                <div class="gallery-container">
+                  <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
+                  <div class="image-container">
+                    <img class="gallery-slide" src="./assets/corner1.jpg"  style="display: block;">
+                    <img class="gallery-slide" src="./assets/corner2.jpg" style="display: none;">
                   </div>
                   <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
                 </div>
