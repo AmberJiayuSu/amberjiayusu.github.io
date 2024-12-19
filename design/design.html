@@ -12,7 +12,7 @@
 
 
 
-    <title>Amber Su - Research</title>
+    <title>Amber Su - Design</title>
 
     <link rel="stylesheet" href="../assets/main.css">
 
@@ -35,6 +35,7 @@
       .image-item {
         position: relative;
         cursor: pointer;
+        margin-bottom: 3em;
       }
 
       .image-item img {
@@ -71,6 +72,31 @@
         max-width: 1280px;
         border-top: 1px solid #ddd;
         margin-top: 3em;
+        margin-bottom: 6em;
+      }
+
+      .expanded-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .close-btn {
+        border: none;
+        background-color: transparent;
+        color: black;
+        font-size: 2rem;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .close-btn:hover {
+        background-color: #c9c9c9;
       }
       </style>
 
@@ -121,28 +147,60 @@
             <div class="image-list-subcontainer">
               <!-- Image and text -->
               <div class="image-item">
-                <img src="./assets/1-500-SITEPLAN.jpg" alt="Image 1" onclick="toggleDropdown(1)">
+                <img src="./assets/1-500-SITEPLAN.jpg"  onclick="toggleDropdown(1)">
                 <div class="image-text">On Land</div>
               </div>
   
               <!-- Dropdown content (separated) -->
               <div id="dropdown1" class="dropdown-content" style="display: none;">
-                <h3>
-                  On Land
-                  </h3>
+                <div class = "expanded-header">
+                  <h3>On Land</h3>
+                  <button class="close-btn" onclick="closeSection('dropdown1')">&times;</button>
+                </div>
                   <p>2023, Spring - Arch3102_Architecture of Relation<br>
                     In Collaboration with Curtis Xu <br>
                     Advisor: Tao DuFour</p>
                 <div class="gallery-container">
-                  <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                  <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
                   <div class="image-container">
-                    <img class="gallery-slide" src="./assets/onland1.jpg" alt="Thermal Comfort Dev" style="display: block;">
-                    <img class="gallery-slide" src="./assets/onland2.jpg" alt="Thermal Comfort Dev" style="display: none;">
-                    <img class="gallery-slide" src="./assets/onland3.jpg" alt="Thermal Comfort Dev" style="display: none;">
+                    <img class="gallery-slide" src="./assets/onland1.jpg"  style="display: block;">
+                    <img class="gallery-slide" src="./assets/onland2.jpg"  style="display: none;">
+                    <img class="gallery-slide" src="./assets/onland3.jpg"style="display: none;">
                   </div>
-                  <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                  <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
                 </div>
               </div>
+
+
+              <!-- Image and text -->
+              <div class="image-item">
+                <img src="./assets/render11.png"  onclick="toggleDropdown(2)">
+                <div class="image-text">Down the Road</div>
+              </div>
+  
+              <!-- Dropdown content (separated) -->
+              <div id="dropdown2" class="dropdown-content" style="display: none;">
+                <div class = "expanded-header">
+                  <h3>Down the Road</h3>
+                  <button class="close-btn" onclick="closeSection('dropdown2')">&times;</button>
+                </div>
+                  <p>2023, Spring - Arch3102_Architecture of Relation<br>
+                    In Collaboration with Curtis Xu <br>
+                    Advisor: Emma Silverblatt</p>
+                <div class="gallery-container">
+                  <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
+                  <div class="image-container">
+                    <img class="gallery-slide" src="./assets/DR1.jpg"  style="display: block;">
+                    <img class="gallery-slide" src="./assets/DR2.jpg" style="display: none;">
+                    <img class="gallery-slide" src="./assets/DR3.jpg" style="display: none;">
+                    <img class="gallery-slide" src="./assets/DR4.jpg" style="display: none;">
+                  </div>
+                  <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
+                </div>
+              </div>
+
+
+
             </div>
           </div>
         </div>
@@ -177,13 +235,18 @@
     
       <div class="page_footer-copyright">
         &copy; 2024 Amber Su<br />
-        Site last updated 2024-09-28
+        Site last updated 2024-12-18
       </div>
     
       </footer>
     </div>
     
     <script>
+      function closeSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.style.display = 'none';
+      }
+
       function toggleDropdown(index) {
         const dropdown = document.getElementById('dropdown' + index);
         if (dropdown.style.display === "none" || dropdown.style.display === "") {
