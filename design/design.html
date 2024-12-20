@@ -98,6 +98,8 @@
       .close-btn:hover {
         background-color: #c9c9c9;
       }
+
+    
       </style>
 
   </head>
@@ -202,15 +204,45 @@
 
 
               <div class="image-item">
-                <img src="./assets/cornerhousephoto.jpg"  onclick="toggleDropdown(3)">
-                <div class="image-text">Turning the Corner</div>
+                <img src="./assets/chinterior.jpg"  onclick="toggleDropdown(3)">
+                <div class="image-text">Continuing Horizon</div>
               </div>
   
               <!-- Dropdown content (separated) -->
               <div id="dropdown3" class="dropdown-content" style="display: none;">
                 <div class = "expanded-header">
-                  <h3>Turning the Corner</h3>
+                  <h3>Continuing Horizon</h3>
                   <button class="close-btn" onclick="closeSection('dropdown3')">&times;</button>
+                </div>
+                  <p>2022 Spring - Arch2102<br>
+                    Advisor: Katharina Kral</p>
+                <div class="gallery-container">
+                  <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
+                  <div class="image-container">
+                    <img class="gallery-slide" src="./assets/ch1.jpg"  style="display: block;">
+                    <img class="gallery-slide" src="./assets/ch2.jpg" style="display: none;">
+                    <img class="gallery-slide" src="./assets/ch3.jpg" style="display: none;">
+                    <img class="gallery-slide" src="./assets/ch4.jpg" style="display: none;">
+                    <img class="gallery-slide" src="./assets/ch5.jpg" style="display: none;">
+                  </div>
+                  <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
+                </div>
+              </div>
+
+
+
+
+
+              <div class="image-item">
+                <img src="./assets/cornerhousephoto.jpg"  onclick="toggleDropdown(4)">
+                <div class="image-text">Turning the Corner</div>
+              </div>
+  
+              <!-- Dropdown content (separated) -->
+              <div id="dropdown4" class="dropdown-content" style="display: none;">
+                <div class = "expanded-header">
+                  <h3>Turning the Corner</h3>
+                  <button class="close-btn" onclick="closeSection('dropdown4')">&times;</button>
                 </div>
                   <p>2021 Fall - Arch2101<br>
                     Advisor: Kana Arioka</p>
@@ -260,7 +292,7 @@
     
       <div class="page_footer-copyright">
         &copy; 2024 Amber Su<br />
-        Site last updated 2024-12-18
+        Site last updated 2024-12-19
       </div>
     
       </footer>
