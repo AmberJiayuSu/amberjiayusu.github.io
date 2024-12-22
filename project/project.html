@@ -22,6 +22,152 @@
 
 <link rel="stylesheet" href="../assets/main.css">
 
+<style>
+  .project_gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .project_item {
+    width: 22%; 
+    text-align: center;
+  }
+
+  .project_item img {
+    width: 100%;
+    aspect-ratio: 2 / 3; 
+    object-fit: cover;
+    display: block;
+  }
+
+  .project_text {
+    margin-bottom: 0.5em;
+    color: #000000;
+    text-align: left; 
+  }
+
+  .project_title {
+    font-size: 1.15em;
+    font-weight: 600;
+    margin-bottom: 0.5em; 
+  }
+
+  .project_description {
+    font-size: 1em; 
+    line-height: 1.25; 
+    margin: 0; 
+    font-weight: 200;
+  }
+
+
+  
+
+
+
+
+  .project_popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup_content {
+    background: #fff;
+    padding: 10px;
+    width: 50%; 
+    aspect-ratio: 5 / 4; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    overflow: auto; 
+    position: relative; 
+    text-align: center;
+  }
+
+  .close-button {
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
+    position: absolute; 
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .popup_img{
+    width: 100%; 
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    
+  }
+
+  .popup_img img {
+    width: 195%;
+    height: auto; 
+    object-fit: contain; 
+    aspect-ratio: auto;
+    
+  }
+
+  .popup_text {
+    width: 90%; 
+    padding: 10px; 
+    flex-shrink: 0; 
+    text-align: left; 
+    margin-bottom: 1em;
+  }
+
+  .popup_title {
+    margin-top: 1.5em;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+  }
+
+  .popup_description {
+    font-size: 1em; 
+    line-height: 1.25; 
+    margin: 0; 
+    font-weight: 200;
+    margin-bottom: 0.5em;
+    
+  }
+
+
+
+
+  /* Clickable image styling */
+  .clickable-image {
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .clickable-image:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  } 
+
+
+</style>
+
   </head>
 
   <body>
@@ -58,9 +204,102 @@
         <div class = "page_header">
             <header>
                 <h1 class="page_title" itemprop="headline">Project</h1>
-        
-                    
             </header>
+        </div>
+
+        <div  class = "page_block"> 
+
+          <!-- First Line -->
+          <div class="project_gallery">
+
+            <!-- First Item -->
+            <div class="project_item">
+              <div class="project_text">
+                <h3 class="project_title">Weather Analysis</h3>
+                <p class="project_description">Data visualization project</p>
+              </div>
+            
+              <img src="./assets/vis1.jpg"  class="clickable-image" data-modal="modal1"/>
+
+              <div id="modal1" class="project_popup">
+                <div class="popup_content">
+                  <span class="close-button">&times;</span>
+                 
+                  <div class="popup_text">
+                    <h3 class="popup_title">Weather Analysis</h3>
+                    <p class="popup_description">
+                      Data Visualization Built using d3.js - <a href="https://github.com/AmberJiayuSu/Weather-Data-Viz" target="_blank">GitHub Link</a>  <br>
+                      2024 Fall, INFO 3300<br>
+                      Instructor: Jeff Rzeszotarski<br>
+                      Collaborator: Curtis Xu, Chi Zhang<br>
+                    </p>
+                    <p class="popup_description">
+                      This project aims to visualize weather patterns and changes over time in various cities, 
+                      focusing on temperature and humidity trends from 1980 to 2015. By examining chronological shifts across different climate zones, 
+                      it seeks to reveal potential relationships between temperature and humidity while identifying distinct patterns of variation. 
+                      Through clear and intuitive visualizations, the project aims to highlight climate adaptation over the years.
+                    </p>
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/vis1detail.jpg" alt="Detailed Image" />
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Item -->
+            <div class="project_item">
+              <div class="project_text">
+                <h3 class="project_title">CBECS | RECS Dashboard</h3>
+                <p class="project_description">Interactive data visualization project</p>
+              </div>
+            
+              <img src="./assets/vis2.jpg"  class="clickable-image" data-modal="modal2"/>
+
+              <div id="modal2" class="project_popup">
+                <div class="popup_content">
+                  <span class="close-button">&times;</span>
+                 
+                  <div class="popup_text">
+                    <h3 class="popup_title">CBECS | RECS Dashboard</h3>
+                    <p class="popup_description">
+                      Interactive Data Visualization Built using d3.js - <a href="https://github.com/AmberJiayuSu/CBECS-RECS-Visualization" target="_blank">GitHub Link</a>  <br>
+                      2024 Fall, INFO 3300<br>
+                      Instructor: Jeff Rzeszotarski<br>
+                      Collaborator: Curtis Xu, Chi Zhang<br>
+                    </p>
+                    <p class="popup_description">
+                      This visualization is built on data from the Commercial Buildings Energy Consumption Survey (CBECS) and Residential Energy Consumption Survey (RECS). 
+                      It aims to analyze building energy usage patterns across construction years, building sizes, and regions, offering insights into gas, electricity, 
+                      heating, and cooling consumption. By examining the implications of building characteristics on energy usage, the project presents a series of 
+                      visualizations with interactive filters, enabling users to explore and better understand energy consumption trends in both residential and commercial 
+                      buildings.
+                    </p>
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/vis2detail.jpg" alt="Detailed Image" />
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+            
+            <div class="project_item">
+              <div class="project_text">Title and Description</div>
+              <img src="./assets/vis2.png" alt="Image 3" />
+            </div>
+            <div class="project_item">
+              <div class="project_text">Title and Description</div>
+              <img src="./assets/vis2.png" alt="Image 3" />
+            </div>
+          
+    
+          </div>
+
+
+         
+
         </div>
 
         
@@ -98,6 +337,37 @@
       </footer>
     </div>
     
+
+    <script>
+    const images = document.querySelectorAll(".clickable-image");
+    const modals = document.querySelectorAll(".project_popup");
+
+    // Add event listeners to all images
+    images.forEach((image) => {
+      image.addEventListener("click", () => {
+        const modalId = image.getAttribute("data-modal");
+        const modal = document.getElementById(modalId);
+        modal.style.display = "flex";
+      });
+    });
+
+    // Add event listeners to all close buttons
+    modals.forEach((modal) => {
+      const closeButton = modal.querySelector(".close-button");
+      closeButton.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    });
+
+    // Close the modal when clicking outside the modal content
+    window.addEventListener("click", (event) => {
+      modals.forEach((modal) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    });
+    </script>
 
 
 
