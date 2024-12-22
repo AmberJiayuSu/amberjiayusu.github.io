@@ -68,6 +68,7 @@ p{
     padding-bottom: 160px;
 }
 
+
 .page_main#main_first{
 
     display: flex;
@@ -85,6 +86,20 @@ p{
     margin-top: 6em;
     margin-bottom: 6em;
 }
+
+.page_block a {
+    color: #131313;
+    text-decoration: underline; 
+    background-color: transparent; 
+    transition: all 0.3s ease; 
+}
+
+.page_block a:hover {
+color: #FFFFFF; 
+background-color: #000000;
+text-decoration: underline; 
+}
+
 
 
 
