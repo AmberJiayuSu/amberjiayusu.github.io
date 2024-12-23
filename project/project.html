@@ -18,7 +18,7 @@
 
 
 
-<title>Amber Su - Research</title>
+<title>Amber Su - Project</title>
 
 <link rel="stylesheet" href="../assets/main.css">
 
@@ -290,7 +290,60 @@
               </div>
             </div>
             
-            <div class="project_item"></div>
+            <!-- Third Item -->
+            <div class="project_item">
+              <div class="project_text">
+                <h3 class="project_title">Scan-to-Assessment</h3>
+                <p class="project_description">AEC Tech Hack, 2024</p>
+              </div>
+            
+              <img src="./assets/aecproj.jpg"  class="clickable-image" data-modal="modal3"/>
+
+              <div id="modal3" class="project_popup">
+                <div class="popup_content">
+                  <span class="close-button">&times;</span>
+                 
+                  <div class="popup_text">
+                    <h3 class="popup_title">Scan-to-Assessment</h3>
+                    <p class="popup_description">
+                      AEC Tech Hack 2024, NYC - <a href="https://github.com/AmberJiayuSu/3d-scan-with-spatial-analysis/tree/ms_pythonCode" target="_blank">GitHub Link</a>  <br>
+                      Team Project<br>
+                    </p>
+                    <p class="popup_description">
+                      This project develops a tool for real estate value assessment through indoor comfort analysis, 
+                      including daylight, visual, and spatial factors. It preprocesses raw point clouds into rationalized geometry
+                       using machine learning and computer vision, enabling simulations with Ladybug in Grasshopper. 
+                       Results are integrated into a web viewer for easy interaction, empowering residents and real estate owners 
+                       to assess and improve property value. My role was leading the implementation of the geometry rationalization process.
+                    </p>
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/aec1.jpg" alt="Detailed Image" />
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/aec2.jpg" alt="Detailed Image" />
+                  </div>
+                  <div class="popup_text">
+                    <p class="popup_description">
+                      The 3D point cloud is segmented into building elements (e.g., floor, ceiling, walls, windows). 
+                      Floor points are projected onto a 2D plane and padded, which is processed with edge detection 
+                      to extract the building footprint. The footprint is then simplified and refined for clarity. 
+                      The Z-min and Z-max values of walls are calculated to determine the room height. 
+                      For windows, the two furthest endpoints on the footprint are identified to define horizontal extents, 
+                      and their Z-min and Z-max values are calculated.  for the parametric reconstruction of windows.
+                    </p>
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/aec3.jpg" alt="Detailed Image" />
+                  </div>
+                  
+              
+                </div>
+              </div>
+            </div>
+
+
+
             <div class="project_item"></div>
           
     
@@ -386,7 +439,7 @@
     
       <div class="page_footer-copyright">
         &copy; 2024 Amber Su<br />
-        Site last updated 2024-09-28
+        Site last updated 2024-12-22
       </div>
     
       </footer>
