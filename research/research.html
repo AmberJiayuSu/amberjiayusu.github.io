@@ -120,7 +120,7 @@
                   Urban Building Window Detection
                   </h3>
                   <p>2022 - present // Environmental Systems Lab, Cornell University<br>
-                    Project Lead //  <u>Team Member</u>: Ann Ren, Curtis Xu, Tony Liu // <u>Advisor</u>: Timur Dogan</p>
+                    Project Lead  // <u>Team Member</u>: Ann Ren, Curtis Xu, Tony Liu (former) // <u>Advisor</u>: Timur Dogan</p>
               </div>
               <div class = "project_buttom"> <button class ="learnmore" id="open1">Learn More</button> </div>
              
@@ -129,8 +129,25 @@
             <div id="expandedSection1" class="expanded-section" style="display: none;">
               <h3>Project Details</h3>
               <p>
-                To be coming.
+                To support urban building energy modeling (UBEM), we present a scalable and automated method for 
+                façade reconstruction and window detection using Google Photorealistic 3D Tiles. 
+                Our pipeline begins by extracting individual façade texture maps from Google 3D Tiles through 
+                the development of advanced geometric processing algorithms. 
+                These texture maps are then processed using state-of-the-art semantic segmentation models trained to identify windows on façades. 
+                To further enhance accuracy, a post-segmentation optimization step incorporates pattern recognition 
+                and large-vision models to refine the segmentation results. 
+                This workflow is designed to be robust against the noise and blurriness inherent in large-scale photorealistic data, 
+                offering a reliable and scalable approach to building geometry reconstruction for UBEM applications.
               </p>
+              <div class="gallery-container">
+                <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
+                <div class="image-container">
+                  <img class="gallery-slide" src="./assets/facadescanner.jpg" alt="Facade Scanner" style="display: block;">
+                  <img class="gallery-slide" src="./assets/facadescanner2.jpg" alt="Facade Scanner" style="display: none;">
+                  <img class="gallery-slide" src="./assets/facadescanner3.jpg" alt="Facade Scanner" style="display: none;">
+                </div>
+                <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
+              </div>
             </div>
     
 
@@ -152,6 +169,7 @@
               <p>
                 To be coming.
               </p>
+              
             </div>
 
 
