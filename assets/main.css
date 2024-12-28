@@ -184,6 +184,8 @@ button.learnmore {
     padding: 20px;
     border-top: 1px solid #ccc;
     margin-top: 20px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #ccc;
   }
 
 /* Close Button (X) */
@@ -207,7 +209,7 @@ button.learnmore {
     max-width: 1280px;
     margin: auto;
     margin-top: 4em;
-    margin-bottom: 4em;
+    margin-bottom: 1em;
   }
   
   .image-container {
