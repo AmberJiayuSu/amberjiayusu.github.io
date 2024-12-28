@@ -38,8 +38,9 @@
      
 
       .project_item{
-          margin-bottom: 3em;
+          margin-top: 4.5em;
       }
+
 
       .expanded-header{
         display: flex;
@@ -64,6 +65,13 @@
 
       .close-btn:hover {
         background-color: #c9c9c9;
+      }
+
+      .learnmore:hover{
+        color: #FFFFFF; 
+        background-color: #000000;
+        text-decoration: underline; 
+        
       }
 
   </style>
@@ -127,7 +135,10 @@
             </div>
 
             <div id="expandedSection1" class="expanded-section" style="display: none;">
-              <h3>Project Details</h3>
+              <div class = "expanded-header">
+                <h3>Project Details</h3>
+                <button class="close-btn" onclick="closeSection('expandedSection1')"> &times;</button>
+              </div>
               <p>
                 To support urban building energy modeling (UBEM), we present a scalable and automated method for 
                 façade reconstruction and window detection using Google Photorealistic 3D Tiles. 
@@ -165,7 +176,10 @@
             </div>
 
             <div id="expandedSection2" class="expanded-section" style="display: none;">
-              <h3>Project Details</h3>
+              <div class = "expanded-header">
+                <h3>Project Details</h3>
+                <button class="close-btn" onclick="closeSection('expandedSection2')"> &times;</button>
+              </div>
               <p>
                 To be coming.
               </p>
@@ -184,16 +198,15 @@
                 <p>2023 - present // KPF<br>
                   <u>Team Member</u>: Amber Su, Remy Mermelstein, Christina Brown  // <u>Advisor</u>: Carlos Cerezo Davila</p></p>
               </div>
-              <div class = "project_buttom"> <button class ="learnmore" id="open4">Learn More</button> </div>
+              <div class = "project_buttom"> <button class ="learnmore" id="open3">Learn More</button> </div>
             </div>
 
-            <div id="expandedSection4" class="expanded-section" style="display: none;">
+            <div id="expandedSection3" class="expanded-section" style="display: none;">
               <div class = "expanded-header">
                 <h3>Project Details</h3>
-                <button class="close-btn" onclick="closeSection('expandedSection4')">&times;</button>
+                <button class="close-btn" onclick="closeSection('expandedSection3')"> &times;</button>
               </div>
                 
-              
               <p>
                 
                 This research focuses on three key aspects: developing custom scripts to integrate hourly simulated CFD wind 
@@ -226,12 +239,15 @@
                 <p>2024 // KPF<br>
                    <u>Advisor</u>: Carlos Cerezo Davila</p></p>
               </div>
-              <div class = "project_buttom"> <button class ="learnmore" id="open3">Learn More</button> </div>
+              <div class = "project_buttom"> <button class ="learnmore" id="open4">Learn More</button> </div>
             
           </div>
 
-            <div id="expandedSection3" class="expanded-section" style="display: none;">
-              <h3>Project Details</h3>
+            <div id="expandedSection4" class="expanded-section" style="display: none;">
+              <div class = "expanded-header">
+                <h3>Project Details</h3>
+                <button class="close-btn" onclick="closeSection('expandedSection4')"> &times;</button>
+              </div>
               <p>
                 To be coming.
               </p>
@@ -342,6 +358,8 @@
       const section = document.getElementById(sectionId);
       section.style.display = 'none';
     }
+
+    
 
     const modelfunc = function(index){
       var section = document.getElementById("expandedSection" + index);
