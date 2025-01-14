@@ -140,8 +140,8 @@
                 <button class="close-btn" onclick="closeSection('expandedSection1')"> &times;</button>
               </div>
               <p>
-                To support urban building energy modeling (UBEM), we present a scalable and automated method for 
-                façade reconstruction and window detection using Google Photorealistic 3D Tiles. 
+                We present a scalable and automated method for 
+                façade reconstruction and window detection using Google Photorealistic 3D Tiles, for high LOD UBEM. 
                 Our pipeline begins by extracting individual façade texture maps from Google 3D Tiles through 
                 the development of advanced geometric processing algorithms. 
                 These texture maps are then processed using state-of-the-art semantic segmentation models trained to identify windows on façades. 
@@ -172,17 +172,32 @@
                     Individual Project  // <u>Advisor</u>: Timur Dogan</p></p>
                 </div>
                 <div class = "project_buttom"> <button class ="learnmore" id="open2">Learn More</button> </div>
-              
+                
+                <div id="expandedSection2" class="expanded-section" style="display: none;">
+                  <div class = "expanded-header">
+                    <h3>Project Details</h3>
+                    <button class="close-btn" onclick="closeSection('expandedSection2')"> &times;</button>
+                  </div>
+                  <p>
+                    I have been actively contributing to the Environmental Systems Lab’s development of Urban Building Energy Modeling (UBEM) 
+                    tools to support Ithaca, NY’s Green New Deal goal of achieving net-zero emissions by 2030.
+                    My work focuses on developing a building energy model archetype extraction package to synthesize key information on 
+                    construction, internal loads, and systems from EnergyPlus input files. 
+                    Additionally, I have been creating a data processing framework in  to handle and standardize diverse urban datasets for simulation. 
+                    Furthermore, I have played a key role in designing and implementing core geometrical data structures and infrastructure to 
+                    enable high Level of Detail (LOD) building energy simulations.
+                  </p>
+                  <div class="gallery-container">
+                    <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
+                    <div class="image-container">
+                      <img class="gallery-slide" src="./assets/UBEM.jpg" alt="UBEM" style="display: block;">
+                      <img class="gallery-slide" src="./assets/UBEM2.jpg" alt="UBEM" style="display: none;">
+                    </div>
+                    <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
+                  </div>
             </div>
 
-            <div id="expandedSection2" class="expanded-section" style="display: none;">
-              <div class = "expanded-header">
-                <h3>Project Details</h3>
-                <button class="close-btn" onclick="closeSection('expandedSection2')"> &times;</button>
-              </div>
-              <p>
-                To be coming.
-              </p>
+           
               
             </div>
 
@@ -208,7 +223,6 @@
               </div>
                 
               <p>
-                
                 This research focuses on three key aspects: developing custom scripts to integrate hourly simulated CFD wind 
                 from prevailing wind directions into outdoor thermal comfort analysis, incorporating simulated shortwave radiation 
                 into indoor thermal comfort calculations to better reflect localized radiative conditions compared to the uniform diffuse and reflective 
@@ -243,19 +257,23 @@
             
           </div>
 
-            <div id="expandedSection4" class="expanded-section" style="display: none;">
-              <div class = "expanded-header">
-                <h3>Project Details</h3>
-                <button class="close-btn" onclick="closeSection('expandedSection4')"> &times;</button>
-              </div>
-              <p>
-                To be coming.
-              </p>
+          <div id="expandedSection4" class="expanded-section" style="display: none;">
+            <div class = "expanded-header">
+              <h3>Project Details</h3>
+              <button class="close-btn" onclick="closeSection('expandedSection4')"> &times;</button>
             </div>
-
-
-      
-          </div>
+            <p>
+              I developed and optimized workflows in Grasshopper to automate early-stage energy modeling, 
+              focusing on building geometry processing, including thermal zone separation, window and shading generation. 
+              Additionally, I defined space loads, created construction templates, and established a visualization pipeline.
+            </p>
+            <div class="gallery-container">
+              <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
+              <div class="image-container">
+                <img class="gallery-slide" src="./assets/ME.jpg" alt="Massing to Energy Modeling" style="display: block;">
+              </div>
+              <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
+            </div>
         </div>
 
 
