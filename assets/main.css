@@ -68,7 +68,7 @@ text-decoration: underline;
 }
 
 .page_main{
-    width: 70%;
+    width: 60%;
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
@@ -83,7 +83,7 @@ text-decoration: underline;
 
     display: flex;
     justify-content: space-between;
-    gap: 12em; 
+    gap: 8em; 
 }
 
 
@@ -94,7 +94,7 @@ text-decoration: underline;
 
 .page_block{
     margin-top: 6em;
-    margin-bottom: 6em;
+    margin-bottom: 10em;
 }
 
 .page_block a {
@@ -254,3 +254,9 @@ button.learnmore {
     background-color: rgba(0, 0, 0, 0.8);
   }
   
+
+  .page_footerlinklst a:hover{
+    color: #FFFFFF; 
+    background-color: #000000;
+    text-decoration: underline;
+  }
