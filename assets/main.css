@@ -14,7 +14,8 @@ h2{
 p{
     color:#131313;
     font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    line-height: 1.5;
     text-align: justify;
     margin-top: 2em;
 }   
