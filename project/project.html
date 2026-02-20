@@ -191,11 +191,11 @@
                 
                 <li class="masthead_menu-item"><a href="../research/research.html">Research</a></li>
 
-                <li class="masthead_menu-item"><a href="../design/design.html">Design</a></li>
-    
                 <li class="masthead_menu-item"><a href="../project/project.html">Project</a></li>
 
-                <li class="masthead_menu-item"><a href="../misc/misc.html">Misc</a></li>
+                <li class="masthead_menu-item"><a href="../design/design.html">Design</a></li>
+
+                <!-- <li class="masthead_menu-item"><a href="../misc/misc.html">Misc</a></li> -->
               
                 
                 <li class="masthead_menu-item"><a href="../cv/cv.pdf">Resume</a></li>
@@ -223,16 +223,145 @@
           <!-- First Line -->
           <div class="project_gallery">
 
-            <!-- First Item -->
+            
+              <div class="project_item">
+              <div class="project_text">
+                <h3 class="project_title">PointPROP</h3>
+                <p class="project_description">DL-based surrogate model for point cloud occulusion testing</p>
+              </div>
+            
+              <img src="./assets/dl.jpg"  class="clickable-image" data-modal="modal1"/>
+
+              <div id="modal1" class="project_popup">
+                <div class="popup_content">
+                  <span class="close-button">&times;</span>
+                 
+                  <div class="popup_text">
+                    <h3 class="popup_title">PointPROP</h3>
+                    <p class="popup_description">
+                      <a href="https://github.com/AmberJiayuSu/DeepLearning_FinalProject_PointPROP" target="_blank">GitHub Link</a>  <br>
+                      2025 Fall, 6.7960, MIT<br>
+                      Instructor: Sara Beery, Kaiming He, Omar Khattab<br>
+                      Collaborator: Eric Kyle Cheung<br>
+                    </p>
+                    <div class="popup_description">
+                      <span style="display:block; margin-bottom: 0.6em;">PointPROP is a deep learning–based surrogate model for point-in-time solar ray occlusion directly on urban LiDAR point clouds.</span>
+                      Given:
+                      <ul style="margin: 0.4em 0 0.4em 1.2em;">
+                        <li>a context point cloud <em>pts_context</em> ∈ ℝ<sup>N×3</sup>,</li>
+                        <li>a set of test points <em>pts_test</em> ∈ ℝ<sup>M×3</sup>, and</li>
+                        <li>a solar ray direction <em>ray</em> ∈ ℝ<sup>3</sup>,</li>
+                      </ul>
+                      <span style="display:block; margin-bottom: 0.6em;">the model predicts whether each test point is occluded or visible along that ray.</span>
+                      Formally, we learn a binary classifier:<br>
+                      <span style="display:block; margin-top: 0.4em; text-align: center;">
+                        <span style="font-weight: 300;">f</span>(<em>pts_context</em>, <em>pts_test</em>, <em>ray</em>) ∈ {0,1}<sup>M</sup>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/Maingif.gif" alt="Detailed Image" style="width: 75%; height: auto;" />
+                  </div>
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Step 1 - Baseline Comparison (Transformer vs. MLP, ± Fourier Features)</span> We compare transformer-based and MLP-based architectures, each with and without Fourier positional embeddings, to evaluate their inductive biases for occlusion prediction. Fourier features improve convergence and slightly lower training loss, but introduce higher validation variance. Overall, all four models achieve nearly identical test performance, indicating that architectural choice and positional encoding have limited impact on final classification trade-offs. The MLP with Fourier features achieves the lowest loss and most stable convergence, while qualitative results show that models capture global occlusion patterns well but struggle with finer geometric details.
+                    </p>
+                  </div>
+                   <figure class="popup_img" style="flex-direction: column; align-items: center; margin-top: 0.5em;">
+                    <img src="./assets/DL_Step1.png" alt="Detailed Image" style="width: 75%; height: auto;" />
+                  </figure>
+                  <figure class="popup_img" style="flex-direction: column; align-items: center; margin-top: 0.5em;">
+                    <img src="./assets/samples_grid_basic_blog.png" alt="Detailed Image" style="width: 75%; height: auto;" />
+                    <figcaption style="font-size: 0.85em; font-weight: 200; color: #555; text-align: center;">Testing Example with MLP + Fourier</figcaption>
+                  </figure>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Step 2 - Capacity and Resolution Analysis</span> We investigate whether model performance is limited by aggressive point cloud downsampling rather than architectural choice. By comparing 8× and 4× downsampling in the encode, we test the impact of spatial resolution and model capacity. Results show that reducing downsampling (4×) improves stability for the MLP without sacrificing accuracy, while the transformer becomes more prone to overfitting when given denser inputs. Importantly, lowering feature dimensions does not harm performance but significantly reduces parameter count and inference time. Overall, a shallower 4× downsampling MLP offers the best trade-off between accuracy, stability, and efficiency, suggesting that resolution is the primary bottleneck.
+                    </p>
+                  </div>
+                   <figure class="popup_img" style="flex-direction: column; align-items: center; margin-top: 0.5em;">
+                    <img src="./assets/DL_Step2.png" alt="Detailed Image" style="width: 75%; height: auto;" />
+                  </figure>
+                  <figure class="popup_img" style="flex-direction: column; align-items: center; margin-top: 0.5em;">
+                    <img src="./assets/samples_grid_4downsample_blog.png" alt="Detailed Image" style="width: 75%; height: auto;" />
+                    <figcaption style="font-size: 0.85em; font-weight: 200; color: #555; text-align: center;">Testing Example with MLP 4x Downsampling</figcaption>
+                  </figure>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Step 3 - Incorporating Local Geometric Bias</span> To address the model’s difficulty in capturing fine-grained geometric patterns, we introduce a local pooling branch inspired by PointNet++. In addition to global pooling, each test point aggregates features from its K nearest context neighbors using relative positional encoding and shared MLPs, producing a local descriptor that is combined with global and point-wise features for prediction. This local geometric bias significantly improves performance with minimal increase in parameters and no additional inference cost. Qualitative results show sharper probability maps and better recovery of small occluded regions, confirming that explicitly modeling local structure substantially enhances fine-detail prediction.
+                    </p>
+                  </div>
+                   <figure class="popup_img" style="flex-direction: column; align-items: center; margin-top: 0.5em;">
+                    <img src="./assets/DL_Step3.png" alt="Detailed Image" style="width: 75%; height: auto;" />
+                  </figure>
+                  <figure class="popup_img" style="flex-direction: column; align-items: center; margin-top: 0.5em;">
+                    <img src="./assets/samples_grid_localPooling_blog.png" alt="Detailed Image" style="width: 75%; height: auto;" />
+                    <figcaption style="font-size: 0.85em; font-weight: 200; color: #555; text-align: center;">Testing Example with Local Pooling</figcaption>
+                  </figure>
+              
+                </div>
+              </div>
+            </div>
+
+              <div class="project_item">
+              <div class="project_text">
+                <h3 class="project_title">Bluebike Rebalancing</h3>
+                <p class="project_description">Multi-stage mixed-integer bike system optimization</p>
+              </div>
+            
+              <img src="./assets/Opt.jpg"  class="clickable-image" data-modal="modal2"/>
+
+              <div id="modal2" class="project_popup">
+                <div class="popup_content">
+                  <span class="close-button">&times;</span>
+                 
+                  <div class="popup_text">
+                    <h3 class="popup_title">Bluebike Rebalancing</h3>
+                    <p class="popup_description">
+                      Multi-stage mixed-integer bike system optimization - <a href="./assets/Optimization_Final_Report.pdf" target="_blank">Final Report</a>  <br>
+                      2025 Fall, 6.C57J, MIT<br>
+                      Instructor: Alexandre Jacquillat, Saurabh Amin<br>
+                      Collaborator: Ray Law, Kara Chou<br>
+                    </p>
+                    <p class="popup_description">
+                      This project develops a predictive rebalancing strategy for the Bluebikes system in Greater Boston, which supports over 27 million trips across 600 stations and 5,500 bikes. Due to highly stochastic and spatially uneven demand, stations frequently become either empty or full, leading to user dissatisfaction and lost ridership. To address this, we formulate a two-stage optimization framework that determines optimal initial bike allocations and truck routing plans before daily operations begin. By leveraging historical demand data, the model minimizes unmet demand and rebalancing costs, providing a data-driven baseline schedule that improves system reliability while reducing operational inefficiencies.
+                    </p>
+                    <p class="popup_description"> <span style="font-weight: 400;"> Subproblem 1 </span> determines the optimal initial distribution of bikes across stations at the start of the day. The goal is to reduce user dissatisfaction—caused by stations becoming nearly empty or nearly full—while keeping bike flows consistent with expected demand patterns. The model allocates a fixed total number of bikes across stations, ensures that bike counts always stay within station capacity, and penalizes large deviations from forecasted net flows.</p>
+                  </div>
+                  
+                  <div class="popup_img">
+                    <img src="./assets/Opt_Prob_1.jpg" alt="Detailed Image" style="width:75%; height:auto;"/> 
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/Opt_Prob_1_Res.jpg" alt="Detailed Image" style="width:75%; height:auto;"/>
+                  </div>
+                   <div class="popup_text">
+                  <p class="popup_description"> <span style="font-weight: 400;"> Subproblem 2 </span> determines how to physically rebalance the system to achieve the target bike distribution computed in Subproblem 1. We model the network as a routing problem in which a limited fleet of trucks picks up and drops off bikes across stations. The optimization jointly decides truck routes and loading actions to move the system as close as possible to the desired inventory levels, while minimizing travel distance, handling costs, and unmet targets.</p>
+                  </div>
+                  
+                  <div class="popup_img">
+                    <img src="./assets/Opt_Prob_2.jpg" alt="Detailed Image" style="width:75%; height:auto;"/> 
+                  </div>
+                  <div class="popup_img">
+                    <img src="./assets/Opt_Prob_2_Res.jpg" alt="Detailed Image" style="width:75%; height:auto;"/>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+
+
             <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">Weather Analysis</h3>
                 <p class="project_description">Data visualization project</p>
               </div>
             
-              <img src="./assets/vis1.jpg"  class="clickable-image" data-modal="modal1"/>
+              <img src="./assets/vis1.jpg"  class="clickable-image" data-modal="modal3"/>
 
-              <div id="modal1" class="project_popup">
+              <div id="modal3" class="project_popup">
                 <div class="popup_content">
                   <span class="close-button">&times;</span>
                  
@@ -240,7 +369,7 @@
                     <h3 class="popup_title">Weather Analysis</h3>
                     <p class="popup_description">
                       Data Visualization Built using d3.js - <a href="https://github.com/AmberJiayuSu/Weather-Data-Viz" target="_blank">GitHub Link</a>  <br>
-                      2024 Fall, INFO 3300<br>
+                      2024 Fall, Cornell University, INFO 3300<br>
                       Instructor: Jeff Rzeszotarski<br>
                       Collaborator: Curtis Xu, Chi Zhang<br>
                     </p>
@@ -266,9 +395,9 @@
                 <p class="project_description">Interactive data visualization project</p>
               </div>
             
-              <img src="./assets/vis2.jpg"  class="clickable-image" data-modal="modal2"/>
+              <img src="./assets/vis2.jpg"  class="clickable-image" data-modal="modal4"/>
 
-              <div id="modal2" class="project_popup">
+              <div id="modal4" class="project_popup">
                 <div class="popup_content">
                   <span class="close-button">&times;</span>
                  
@@ -276,7 +405,7 @@
                     <h3 class="popup_title">CBECS | RECS Dashboard</h3>
                     <p class="popup_description">
                       Interactive Data Visualization Built using d3.js - <a href="https://github.com/AmberJiayuSu/CBECS-RECS-Visualization" target="_blank">GitHub Link</a>  <br>
-                      2024 Fall, INFO 3300<br>
+                      2024 Fall, Cornell University, INFO 3300<br>
                       Instructor: Jeff Rzeszotarski<br>
                       Collaborator: Curtis Xu, Chi Zhang<br>
                     </p>
@@ -295,17 +424,19 @@
                 </div>
               </div>
             </div>
-            
-            <!-- Third Item -->
+            </div>
+
+            <div class="project_gallery">
+
             <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">Scan-to-Assessment</h3>
-                <p class="project_description">AEC Tech Hack, 2024</p>
+                <p class="project_description">Scan-to-simulation for property assessment</p>
               </div>
             
-              <img src="./assets/aecproj.jpg"  class="clickable-image" data-modal="modal3"/>
+              <img src="./assets/aecproj.jpg"  class="clickable-image" data-modal="modal5"/>
 
-              <div id="modal3" class="project_popup">
+              <div id="modal5" class="project_popup">
                 <div class="popup_content">
                   <span class="close-button">&times;</span>
                  
@@ -349,28 +480,25 @@
             </div>
 
 
-            <!-- Fourth Item -->
             <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">Personal Website</h3>
-                <p class="project_description">Amber Su's Personal Website</p>
+                <p class="project_description">Web dev</p>
               </div>
             
-              <img src="./assets/personalweb.jpg"  class="clickable-image" data-modal="modal4"/>
+              <img src="./assets/personalweb.jpg"  class="clickable-image" data-modal="modal6"/>
   
-              <div id="modal4" class="project_popup">
+              <div id="modal6" class="project_popup">
                 <div class="popup_content">
                   <span class="close-button">&times;</span>
                  
                   <div class="popup_text">
                     <h3 class="popup_title">Personal Website</h3>
                     <p class="popup_description">
+                      <a href="https://github.com/AmberJiayuSu/amberjiayusu.github.io" target="_blank">GitHub Link</a> <br>
                       Ongoing <br>
-                      Personal Project
-                    </p>
-                    <p class="popup_description">
+                      Personal Project <br>
                       Amber Su's research, publications, designs, and projects :) <br>
-                      <a href="https://github.com/AmberJiayuSu/amberjiayusu.github.io" target="_blank">GitHub Link</a>
                     </p>
                   </div>
                   <div class="popup_img">
@@ -384,34 +512,27 @@
                 </div>
               </div>
             </div>
-          
-    
-          </div>
 
 
-
-        <!-- Second Line -->
-        <div class="project_gallery">
-
-          <!-- First Item -->
           <div class="project_item">
             <div class="project_text">
               <h3 class="project_title">Plan Gen</h3>
-              <p class="project_description">Architectural Floor Plan Generator</p>
+              <p class="project_description"> Rule-based architecture floor plan generator</p>
             </div>
           
-            <img src="./assets/plangen.jpg"  class="clickable-image" data-modal="modal5"/>
+            <img src="./assets/plangen.jpg"  class="clickable-image" data-modal="modal7"/>
 
-            <div id="modal5" class="project_popup">
+            <div id="modal7" class="project_popup">
               <div class="popup_content">
                 <span class="close-button">&times;</span>
                
                 <div class="popup_text">
                   <h3 class="popup_title">Plan Gen</h3>
                   <p class="popup_description">
-                    CS3110, 2023 Spring<br>
-                    Team Member: Amber Su, Brittanie Chen, Jessie Zhang, Tony Liu <br>
-                    <a href="https://github.com/AmberJiayuSu/Architecture-Plan-Generator" target="_blank">GitHub Link</a>
+                    Rule-based floor plan generator - <a href="https://github.com/AmberJiayuSu/Architecture-Plan-Generator" target="_blank">GitHub Link</a> <br>
+                    2023 Spring, Cornell University, CS 3110<br>
+                    Instructor: Justin Hsu, Dexter Kozen<br>
+                    Collaborator: Brittanie Chen, Jessie Zhang, Tony Liu<br>
                   </p>
                   <p class="popup_description">
                     The Plan Generator is an interactive tool developed entirely in the functional programming language OCaml. 
@@ -431,26 +552,24 @@
             </div>
           </div>
 
-
-          <!-- Second Item -->
           <div class="project_item">
             <div class="project_text">
               <h3 class="project_title">Pomopals</h3>
-              <p class="project_description">Productive & Stay Socialized</p>
+              <p class="project_description">Productive and social web app</p>
             </div>
           
-            <img src="./assets/pm.jpg"  class="clickable-image" data-modal="modal6"/>
+            <img src="./assets/pm.jpg"  class="clickable-image" data-modal="modal8"/>
 
-            <div id="modal6" class="project_popup">
+            <div id="modal8" class="project_popup">
               <div class="popup_content">
                 <span class="close-button">&times;</span>
                
                 <div class="popup_text">
                   <h3 class="popup_title">Pomopals</h3>
                   <p class="popup_description">
-                    BigRed//Hacks 2024 <br>
-                    Team Member: Amber Su, Brookeye Ye, Maggie Chen, Sarah Zhong <br>
-                    <a href="https://github.com/AmberJiayuSu/pomodoro" target="_blank">GitHub Link</a>
+                    <a href="https://github.com/AmberJiayuSu/pomodoro" target="_blank">GitHub Link</a> <br>
+                    2024 Fall, Cornell University, BigRed//Hacks 2024<br>
+                    Collaborator: Brookeye Ye, Maggie Chen, Sarah Zhong<br>
                   </p>
                   <p class="popup_description">
                     Pomopals is a user-friendly web app that blends the Pomodoro technique with a social element, 
@@ -467,6 +586,18 @@
               </div>
             </div>
           </div>
+    
+          </div>
+
+
+
+        <!-- Second Line -->
+        <div class="project_gallery">
+
+         
+
+          <!-- Second Item -->
+          
 
 
 
@@ -477,16 +608,16 @@
               <p class="project_description">Tallinn Architecture Biennale, 2022</p>
             </div>
           
-            <img src="./assets/Friendship WC_68.jpg"  class="clickable-image" data-modal="modal7"/>
+            <img src="./assets/Friendship WC_68.jpg"  class="clickable-image" data-modal="modal9"/>
 
-            <div id="modal7" class="project_popup">
+            <div id="modal9" class="project_popup">
               <div class="popup_content">
                 <span class="close-button">&times;</span>
                
                 <div class="popup_text">
                   <h3 class="popup_title">Friendship WC</h3>
                   <p class="popup_description">
-                    Summer 2022, Ecological Action Lab <br>
+                    Summer 2022, Cornell University, Ecological Action Lab <br>
                     Design Leader: Freddo Daneshvaran <br>
                     Team Member: Amber Su, Ann Ren, Kate Heath <br>
                     Design Advisor:  Caroline O’Donnell, Iris Xiaoxue Ma, Martin Miller <br>
@@ -509,7 +640,7 @@
             </div>
           </div>
 
-          <div class="project_item"></div>
+         
         
   
         </div>
@@ -540,6 +671,8 @@
             <li><a href="https://www.linkedin.com/in/amber-su-383075218" target="_blank"><i  aria-hidden="true"></i> LinkedIn</a></li>
     
             <li><a href="https://www.researchgate.net/profile/Amber-Su-3" target="_blank"><i  aria-hidden="true"></i> ResearchGate</a></li>
+
+            <li><a href="https://scholar.google.com/citations?user=gf_PInQAAAAJ&hl=en&oi=ao" target="_blank"><i  aria-hidden="true"></i> GoogleScholar</a></li>
     
             <li><a href="https://github.com/AmberJiayuSu" target="_blank"><i  aria-hidden="true"></i> GitHub</a></li>
           
@@ -548,8 +681,8 @@
     
     
       <div class="page_footer-copyright">
-        &copy; 2025 Amber Su<br />
-        Site last updated 2024-12-22
+        &copy; 2026 Amber Su<br />
+        Site last updated 2026-02-20
       </div>
     
       </footer>
