@@ -6,6 +6,7 @@
     
 
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -93,10 +94,23 @@
       }
 
       .learnmore:hover{
-        color: #FFFFFF; 
+        color: #FFFFFF;
         background-color: #000000;
-        text-decoration: underline; 
-        
+        text-decoration: underline;
+      }
+
+      @media (max-width: 480px) {
+        .publication_item {
+          flex-direction: column;
+          gap: 0.2em;
+        }
+
+        .pub_date {
+          width: auto;
+          padding-top: 0;
+          font-size: 0.95em;
+          color: #555;
+        }
       }
 
   </style>
