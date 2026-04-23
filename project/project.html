@@ -5,6 +5,7 @@
     
 
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -162,19 +163,32 @@
 
 
 
-  /* Clickable image styling */
   .clickable-image {
     cursor: pointer;
     transition: transform 0.3s;
   }
 
   .clickable-image:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-  } 
+    transform: scale(1.05);
+  }
 
+  @media (max-width: 768px) {
+    .project_item {
+      width: 47%;
+    }
 
+    .popup_content {
+      width: 92%;
+      aspect-ratio: unset;
+      max-height: 88vh;
+    }
+  }
 
-
+  @media (max-width: 480px) {
+    .project_item {
+      width: 100%;
+    }
+  }
 </style>
 
   </head>
