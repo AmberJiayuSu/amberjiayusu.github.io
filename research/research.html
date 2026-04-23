@@ -6,6 +6,7 @@
     
 
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -31,8 +32,29 @@
       font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
       }
 
-      .publication_item{
-          margin-top: 4em;
+      .publication_item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 2em;
+        margin-left: 0;       /* Remove left margin from the whole item */
+        padding-left: 0;      /* Ensure no padding on left either */
+      }
+
+      .pub_date {
+        width: 6em;
+        flex-shrink: 0;
+        margin: 0;            /* Removes all margin (left, right, top, bottom) */
+        padding-top: 0.2em;
+        text-align: left;
+        font-size: 1.1em;
+      }
+
+      .pub_content h3 {
+        margin: 0;
+      }
+
+      .pub_content p {
+        margin-top: 0.6em;
       }
 
      
@@ -72,10 +94,23 @@
       }
 
       .learnmore:hover{
-        color: #FFFFFF; 
+        color: #FFFFFF;
         background-color: #000000;
-        text-decoration: underline; 
-        
+        text-decoration: underline;
+      }
+
+      @media (max-width: 480px) {
+        .publication_item {
+          flex-direction: column;
+          gap: 0.2em;
+        }
+
+        .pub_date {
+          width: auto;
+          padding-top: 0;
+          font-size: 0.95em;
+          color: #555;
+        }
       }
 
   </style>
@@ -87,27 +122,19 @@
 
     <div class="masthead">
       <div class="masthead_menu">
-  
-          <ul >
-             <li class="masthead_menu-item"><a href="../index.html">Amber Jiayu Su</a></li>
-            
-              
+          <div class="masthead_toprow">
+              <a href="../index.html" class="masthead_brand">Amber Jiayu Su</a>
+              <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                  <span></span><span></span><span></span>
+              </button>
+          </div>
+          <ul class="masthead_nav">
               <li class="masthead_menu-item"><a href="../research/research.html">Research</a></li>
-
+              <li class="masthead_menu-item"><a href="../project/project.html">Project</a></li>
               <li class="masthead_menu-item"><a href="../design/design.html">Design</a></li>
-  
-              <!-- <li class="masthead_menu-item"><a href="../project/project.html">Project</a></li> -->
-
-              <li class="masthead_menu-item"><a href="../misc/misc.html">Misc</a></li>
-            
-              <!-- <li class="masthead_menu-item"><a href="../cv/AmberSu_CV.pdf">CV</a></li> -->
-             
-            
-           
-  
+              <li class="masthead_menu-item"><a href="../cv/cv.pdf">Resume</a></li>
           </ul>
       </div>
-  
   </div>
     
 
@@ -126,229 +153,120 @@
           <h2>
             Publications
           </h2>
-          <div class = "publication">
-            <div class = "publication_item">
+          <div class="publication">
+
+            <div class="publication_item">
+            <div class="pub_date">2026</div>
+            <div class="pub_content">
               <h3>
-                <a href="https://doi.org/10.1080/19401493.2025.2501151" target="_blank">Scalable Building Reconstruction and Window Detection for Urban Building Energy Modelling Applications
+                <a href="https://doi.org/10.1016/j.enbuild.2026.117135" target="_blank">
+                  Voxel Shader – An Efficient Shadow Calculation Approach For Urban Building Energy Modeling
                 </a>
-
               </h3>
-                    <p style="margin-top: 1em;"><b>Amber Jiayu Su</b>, Ann Ren, Kewei Curtis Xu, Timur Dogan <br>
-                      <i>Journal of Building Performance Simulation</i>
-                    </p>
+              <p>
+                <b>Amber Jiayu Su</b>, Timur Dogan <br>
+                <i>Energy and Buildings</i>
+              </p>
             </div>
+          </div>
 
-            
-            <div class = "publication_item">
+            <div class="publication_item">
+            <div class="pub_date">2025</div>
+            <div class="pub_content">
               <h3>
-                <a href="https://publications.ibpsa.org/conference/paper/?id=simbuild2024_2207" target="_blank">Early Design Thermal Comfort Modeling in Transient Conditions for Warming Hot Climates
+                <a href="https://doi.org/10.1080/19401493.2025.2536261" target="_blank">
+                  A Bottom-up Urban Building Energy Model for Evaluating Thermal Load Electrification Measures
                 </a>
-
               </h3>
-                    <p style="margin-top: 1em;"><b>Amber Jiayu Su</b>, Christina Xingyizhen Brown, Remy Mermelstein, Carlos Cerezo Davila <br>
-                      <i>Proceedings of SimBuild Conference 2024</i>
-                    </p>
+              <p>
+                Timur Dogan, Chengxuan Li, Hung Ming Tseng, <b>Amber Jiayu Su</b>, Patrick Kastner <br>
+                <i>Journal of Building Performance Simulation</i>
+              </p>
             </div>
+          </div>
 
-            <div class = "publication_item">
+          <div class="publication_item">
+            <div class="pub_date">2025</div>
+            <div class="pub_content">
               <h3>
-        
-                <a href="https://publications.ibpsa.org/conference/paper/?id=simbuild2024_2188" target="_blank">Impact and Cost Analysis of Thermal Load Electrification Measures using Automated Urban Building Energy Modeling in Ithaca, NY
+                <a href="https://doi.org/10.1080/19401493.2025.2539323" target="_blank">
+                  Dynamic Thermal Comfort Simulation: Model Parameter Considerations for Early-Stage Design Applications
                 </a>
-
               </h3>
-              
-        
-                    <p style="margin-top: 1em;">Timur Dogan, Patrick Kastner, Hung Ming Tseng, <b>Amber Jiayu Su</b>, Kewei Curtis Xu<br>
-                      <i>Proceedings of SimBuild Conference 2024</i>
-                    </p>
+              <p>
+                <b>Amber Jiayu Su</b>, Christina Xing Yizhen Brown, Remy Mermelstein, Carlos Cerezo Davila <br>
+                <i>Journal of Building Performance Simulation</i>
+              </p>
             </div>
+          </div>
 
-            <div class = "publication_item">
+          <div class="publication_item">
+            <div class="pub_date">2025</div>
+            <div class="pub_content">
               <h3>
-        
-                <a href="https://publications.ibpsa.org/conference/paper/?id=bs2023_1406" target="_blank">Facade Scanner: A Scalable Workflow for Building Geometry and Window-to-wall Ratio Capture for Urban Building Energy Modeling
+                <a href="https://doi.org/10.1080/19401493.2025.2501151" target="_blank">
+                  Scalable Building Reconstruction and Window Detection for Urban Building Energy Modelling Applications
                 </a>
-
               </h3>
-              
-        
-                    <p style="margin-top: 1em;"><b>Amber Jiayu Su</b>, Kewei Curtis Xu, Ann Ren, Tony Liu, Timur Dogan<br>
-                      <i>Proceedings of Building Simulation 2023: 18th Conference of IBPSA</i>
-                    </p>
+              <p>
+                <b>Amber Jiayu Su</b>, Ann Ren, Kewei Curtis Xu, Timur Dogan <br>
+                <i>Journal of Building Performance Simulation</i>
+              </p>
             </div>
+          </div>
+
+          <div class="publication_item">
+            <div class="pub_date">2024</div>
+            <div class="pub_content">
+              <h3>
+                <a href="https://publications.ibpsa.org/conference/paper/?id=simbuild2024_2207" target="_blank">
+                  Early Design Thermal Comfort Modeling in Transient Conditions for Warming Hot Climates
+                </a>
+              </h3>
+              <p>
+                <b>Amber Jiayu Su</b>, Christina Xingyizhen Brown, Remy Mermelstein, Carlos Cerezo Davila <br>
+                <i>Proceedings of SimBuild Conference 2024</i>
+              </p>
+            </div>
+          </div>
+
+          <div class="publication_item">
+            <div class="pub_date">2024</div>
+            <div class="pub_content">
+              <h3>
+                <a href="https://publications.ibpsa.org/conference/paper/?id=simbuild2024_2188" target="_blank">
+                  Impact and Cost Analysis of Thermal Load Electrification Measures using Automated Urban Building Energy Modeling in Ithaca, NY
+                </a>
+              </h3>
+              <p>
+                Timur Dogan, Patrick Kastner, Hung Ming Tseng, <b>Amber Jiayu Su</b>, Kewei Curtis Xu <br>
+                <i>Proceedings of SimBuild Conference 2024</i>
+              </p>
+            </div>
+          </div>
+
+          <div class="publication_item">
+            <div class="pub_date">2023</div>
+            <div class="pub_content">
+              <h3>
+                <a href="https://publications.ibpsa.org/conference/paper/?id=bs2023_1406" target="_blank">
+                  Facade Scanner: A Scalable Workflow for Building Geometry and Window-to-wall Ratio Capture for Urban Building Energy Modeling
+                </a>
+              </h3>
+              <p>
+                <b>Amber Jiayu Su</b>, Kewei Curtis Xu, Ann Ren, Tony Liu, Timur Dogan <br>
+                <i>Proceedings of Building Simulation 2023</i>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
 
             
           </div>
-        </div>
-
-        <div class = "page_block">
-          <h2>
-            Projects
-          </h2>
-          <div class = "projects">
-            <div class = "project_item">
-              <div class = "project_text">
-                <h3>
-                  Urban Building Window Detection
-                  </h3>
-                  <p>2022 - present // Environmental Systems Lab, Cornell University<br>
-                    Project Lead  // <u>Team Member</u>: Ann Ren, Curtis Xu, Tony Liu (former) // <u>Advisor</u>: Timur Dogan</p>
-              </div>
-              <!-- <div class = "project_buttom"> <button class ="learnmore" id="open1">Learn More</button> </div> -->
-             
-            </div>
-
-            <div id="expandedSection1" class="expanded-section" style="display: none;">
-              <div class = "expanded-header">
-                <h3>Project Details</h3>
-                <button class="close-btn" onclick="closeSection('expandedSection1')"> &times;</button>
-              </div>
-              <p>
-                We present a scalable and automated method for 
-                façade reconstruction and window detection using Google Photorealistic 3D Tiles, for high LOD UBEM. 
-                Our pipeline begins by extracting individual façade texture maps from Google 3D Tiles through 
-                the development of advanced geometric processing algorithms. 
-                These texture maps are then processed using state-of-the-art semantic segmentation models trained to identify windows on façades. 
-                To further enhance accuracy, a post-segmentation optimization step incorporates pattern recognition 
-                and large-vision models to refine the segmentation results. 
-                This workflow is designed to be robust against the noise and blurriness inherent in large-scale photorealistic data, 
-                offering a reliable and scalable approach to building geometry reconstruction for UBEM applications.
-              </p>
-              <div class="gallery-container">
-                <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                <div class="image-container">
-                  <img class="gallery-slide" src="./assets/facadescanner.jpg" alt="Facade Scanner" style="display: block;">
-                  <img class="gallery-slide" src="./assets/facadescanner2.jpg" alt="Facade Scanner" style="display: none;">
-                  <img class="gallery-slide" src="./assets/facadescanner3.jpg" alt="Facade Scanner" style="display: none;">
-                </div>
-                <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-              </div>
-            </div>
-    
-
-
-              <div class = "project_item">
-                <div class = "project_text">
-                  <h3>
-                    Urban Building Information Preprocessing
-                  </h3>
-                  <p>2023 - present // Environmental Systems Lab, Cornell University<br>
-                    Individual Project  // <u>Advisor</u>: Timur Dogan</p></p>
-                </div>
-                <!-- <div class = "project_buttom"> <button class ="learnmore" id="open2">Learn More</button> </div> -->
-                
-                <div id="expandedSection2" class="expanded-section" style="display: none;">
-                  <div class = "expanded-header">
-                    <h3>Project Details</h3>
-                    <button class="close-btn" onclick="closeSection('expandedSection2')"> &times;</button>
-                  </div>
-                  <p>
-                    I have been actively contributing to the Environmental Systems Lab’s development of Urban Building Energy Modeling (UBEM) 
-                    tools to support Ithaca, NY’s Green New Deal goal of achieving net-zero emissions by 2030.
-                    My work focuses on developing a building energy model archetype extraction package to synthesize key information on 
-                    construction, internal loads, and systems from EnergyPlus input files. 
-                    Additionally, I have been creating a data processing framework in  to handle and standardize diverse urban datasets for simulation. 
-                    Furthermore, I have played a key role in designing and implementing core geometrical data structures and infrastructure to 
-                    enable high Level of Detail (LOD) building energy simulations.
-                  </p>
-                  <div class="gallery-container">
-                    <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                    <div class="image-container">
-                      <img class="gallery-slide" src="./assets/UBEM.jpg" alt="UBEM" style="display: block;">
-                      <img class="gallery-slide" src="./assets/UBEM2.jpg" alt="UBEM" style="display: none;">
-                    </div>
-                    <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-                  </div>
-            </div>
-
-           
-              
-            </div>
-
-
-
-          
-
-            <div class = "project_item">
-              <div class = "project_text">
-                <h3>
-                  Thermal Comfort Analysis
-                </h3>
-                <p>2023 - present // KPF<br>
-                  <u>Team Member</u>: Amber Su, Remy Mermelstein, Christina Brown  // <u>Advisor</u>: Carlos Cerezo Davila</p></p>
-              </div>
-              <!-- <div class = "project_buttom"> <button class ="learnmore" id="open3">Learn More</button> </div> -->
-            </div>
-
-            <div id="expandedSection3" class="expanded-section" style="display: none;">
-              <div class = "expanded-header">
-                <h3>Project Details</h3>
-                <button class="close-btn" onclick="closeSection('expandedSection3')"> &times;</button>
-              </div>
-                
-              <p>
-                This research focuses on three key aspects: developing custom scripts to integrate hourly simulated CFD wind 
-                from prevailing wind directions into outdoor thermal comfort analysis, incorporating simulated shortwave radiation 
-                into indoor thermal comfort calculations to better reflect localized radiative conditions compared to the uniform diffuse and reflective 
-                assumptions in ASHRAE, and creating a dynamic thermal sensation model to assess occupants' comfort under transient conditions.
-              </p>
-
-                <p>
-                Currently, we are working on expanding the research to explore the applications of this analysis in design practice and explore the potential of other multi-node thermoregulatory heat balance and transient thermal comfort model.
-              </p>
-
-              <div class="gallery-container">
-                <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                <div class="image-container">
-                  <img class="gallery-slide" src="./assets/thermalcomfort1.jpg" alt="Thermal Comfort Dev" style="display: block;">
-                  <img class="gallery-slide" src="./assets/thermalcomfort2.jpg" alt="Thermal Comfort Dev" style="display: none;">
-                  <img class="gallery-slide" src="./assets/thermalcomfort3.jpg" alt="Thermal Comfort Dev" style="display: none;">
-                </div>
-                <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-              </div>
-            </div>
-
-
-            <div class = "project_item">
-              <div class = "project_text">
-                <h3>
-                  Building Energy Modeling Automation and Visualization
-                </h3>
-                <p>2024 // KPF<br>
-                   <u>Advisor</u>: Carlos Cerezo Davila</p></p>
-              </div>
-              <!-- <div class = "project_buttom"> <button class ="learnmore" id="open4">Learn More</button> </div> -->
-            
-          </div>
-
-          <div id="expandedSection4" class="expanded-section" style="display: none;">
-            <div class = "expanded-header">
-              <h3>Project Details</h3>
-              <button class="close-btn" onclick="closeSection('expandedSection4')"> &times;</button>
-            </div>
-            <p>
-              I developed and optimized workflows in Grasshopper to automate early-stage energy modeling, 
-              focusing on building geometry processing, including thermal zone separation, window and shading generation. 
-              Additionally, I defined space loads, created construction templates, and established a visualization pipeline.
-            </p>
-            <div class="gallery-container">
-              <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-              <div class="image-container">
-                <img class="gallery-slide" src="./assets/ME.jpg" alt="Massing to Energy Modeling" style="display: block;">
-              </div>
-              <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-            </div>
-        </div>
-      </div>
-
-
 
        
-        
-        
-            
-        </div>
 
       </div>
 
@@ -374,16 +292,18 @@
             <li><a href="https://www.linkedin.com/in/amber-su-383075218" target="_blank"><i  aria-hidden="true"></i> LinkedIn</a></li>
     
             <li><a href="https://www.researchgate.net/profile/Amber-Su-3" target="_blank"><i  aria-hidden="true"></i> ResearchGate</a></li>
+
+            <li><a href="https://scholar.google.com/citations?user=gf_PInQAAAAJ&hl=en&oi=ao" target="_blank"><i  aria-hidden="true"></i> GoogleScholar</a></li>
     
-            <!-- <li><a href="https://github.com/AmberJiayuSu" target="_blank"><i  aria-hidden="true"></i> GitHub</a></li> -->
+            <li><a href="https://github.com/AmberJiayuSu" target="_blank"><i  aria-hidden="true"></i> GitHub</a></li>
           
         </ul>
       </div>
     
     
       <div class="page_footer-copyright">
-        &copy; 2025 Amber Su<br />
-        Site last updated 2025-05-14
+        &copy; 2026 Amber Su<br />
+        Site last updated 2026-02-20
       </div>
     
       </footer>

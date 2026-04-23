@@ -14,7 +14,8 @@ h2{
 p{
     color:#131313;
     font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    line-height: 1.5;
     text-align: justify;
     margin-top: 2em;
 }   
@@ -42,28 +43,66 @@ text-decoration: underline;
 }
 
 
-.masthead_menu{
+.masthead_menu {
     margin-top: 1em;
     margin-bottom: 1em;
-}
-
-.masthead_menu ul{
     max-width: 80%;
     margin-left: 15%;
     margin-right: auto;
-    padding-left: 0px;
     display: flex;
-    list-style-type: none; 
     align-items: center;
 }
 
+.masthead_toprow {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 40px;
+}
 
-.masthead_menu-item{
-    display: flex; 
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
     display: block;
-    padding-left: 0px;
+    width: 22px;
+    height: 1.5px;
+    background: #131313;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hamburger.is-open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.masthead_nav {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.masthead_menu-item {
+    display: block;
+    padding-left: 0;
     padding-right: 20px;
-    margin-left: 0px;
+    margin-left: 0;
     margin-right: 20px;
 }
 
@@ -148,9 +187,7 @@ text-decoration: underline;
     display: flex; 
     max-width: 80%;
     margin-left: 15%;
-    margin-top: 2em;
     margin-bottom: 2em
-   
 }
 
 
@@ -258,7 +295,113 @@ button.learnmore {
   
 
   .page_footerlinklst a:hover{
-    color: #FFFFFF; 
+    color: #FFFFFF;
     background-color: #000000;
     text-decoration: underline;
   }
+
+@media (max-width: 768px) {
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.4em; }
+    p  { font-size: 1em; }
+
+    body { overflow-x: hidden; }
+
+    /* Hamburger nav */
+    .masthead {
+        margin-top: 20px;
+    }
+
+    .masthead_menu {
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+        padding: 0 20px;
+    }
+
+    .masthead_toprow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 0;
+        padding: 6px 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .masthead_nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5em 0 0.8em;
+        margin-top: 0.3em;
+        border-top: 0.5px solid #ccc;
+    }
+
+    .masthead_nav.is-open {
+        display: flex;
+    }
+
+    .masthead_menu-item {
+        padding-right: 0;
+        margin-right: 0;
+        padding-top: 0.45em;
+        padding-bottom: 0.45em;
+        width: 100%;
+        font-size: 0.95em;
+    }
+
+    /* Main content */
+    .page_main {
+        width: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 3em;
+        margin-bottom: 2em;
+        padding-bottom: 60px;
+    }
+
+    /* Home page: stack photo below text */
+    .page_main#main_first {
+        flex-direction: column;
+        gap: 2em;
+    }
+
+    .amber_image {
+        max-width: 75%;
+        margin-right: 0 !important;
+    }
+
+    .page_block {
+        margin-top: 3em;
+        margin-bottom: 4em;
+    }
+
+    /* Footer */
+    .page_footer {
+        height: auto;
+        padding-top: 0.5em;
+        padding-bottom: 1.5em;
+    }
+
+    .page_footerlink ul {
+        flex-wrap: wrap;
+        width: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+        row-gap: 0.5em;
+    }
+
+    .page_footerlinklst a {
+        margin-right: 1.2em;
+    }
+
+    .page_footer-copyright {
+        max-width: none;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
