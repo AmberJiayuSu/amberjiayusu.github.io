@@ -1,0 +1,208 @@
+/* Full-bleed hero used on individual design project pages
+   (design/on-land.html, down-the-road.html, etc.).
+   Every rule is scoped under body.design-project so it can never
+   leak onto other pages that happen to reuse a class name.
+   Draft styling — colors/sizing intended to be refined. */
+
+body.design-project {
+  /* Shared left edge: matches .page_main's default 20% inset, so the
+     masthead, the meta rules, and the "Back to Design" link all line up. */
+  --content-inset: 20%;
+  background-color: transparent;
+  transition: background-color 0.4s ease;
+}
+
+/* Old-paper tint across the whole page (masthead + footer included)
+   while the title sits behind the image. .page_footer sets its own
+   opaque white background in main.css, so it needs its own override. */
+body.design-project.revealed {
+  background-color: #f3f3f3;
+}
+
+body.design-project .page_footer {
+  transition: background-color 0.4s ease;
+}
+
+body.design-project.revealed .page_footer {
+  background-color: #f3f3f3;
+}
+
+/* Desktop only — on mobile the masthead and .page_main already share
+   the same left inset (20px), so no override is needed there. */
+@media (min-width: 769px) {
+  body.design-project .masthead_menu {
+    margin-left: var(--content-inset);
+    max-width: 75%;
+  }
+}
+
+body.design-project .project-hero {
+  position: relative;
+  width: 100%;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+/* Anchored to the image's own box (its containing block is
+   .project-hero-imagewrap), right- and bottom-aligned with a negative
+   offset — so its bottom-right corner always sits a bit outside the
+   image's bottom-right corner, in the same relative spot on every
+   project page since every hero image renders at the same size. */
+body.design-project .project-hero-title {
+  position: absolute;
+  right: -5.0vw;
+  bottom: -4.5vw;
+  z-index: 2;
+  max-width: min(74vw, 920px);
+  margin: 0;
+  color: #131313;
+  font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.2;
+  letter-spacing: 0;
+  word-spacing: 0.35em;
+  font-size: clamp(3rem, 10vw, 8rem);
+  pointer-events: none;
+}
+
+body.design-project .project-meta {
+  position: absolute;
+  /* Sits past the prev arrow (left: 3%, 44px wide) so they never overlap. */
+  left: 13%;
+  bottom: 0%;
+  /* Always sits behind the photo (like the title does once revealed),
+     so a wide image can pass in front of it instead of cutting across it. */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Single top-aligned line, sharing the same left edge as the bottom
+   block so it lines up with the first (leftmost) bottom line. */
+body.design-project .project-meta--top {
+  bottom: auto;
+  top: 8%;
+  
+}
+
+body.design-project .project-meta-text {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.design-project .project-meta-text li {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: -apple-system, system-ui, "Roboto", "Lucida Grande", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #131313;
+  white-space: nowrap;
+}
+
+body.design-project .project-hero-imagewrap {
+  position: relative;
+  z-index: 1;
+  height: min(50.67vw, 640px);
+  width: auto;
+  max-width: 82vw;
+  transition: box-shadow 0.3s ease;
+}
+
+body.design-project .project-hero-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  cursor: pointer;
+  /* Dimmed while the title still sits in front of it. */
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+/* After the first prev/next click, the title sinks behind the image,
+   revealing large lettering around the photo's edges. */
+body.design-project .project-hero.revealed .project-hero-title {
+  z-index: 0;
+}
+
+body.design-project .project-hero.revealed .project-hero-image {
+  z-index: 2;
+  opacity: 1;
+}
+
+body.design-project .project-hero.revealed .project-hero-imagewrap {
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.design-project .project-hero-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  border: none;
+  background-color: transparent;
+  color: #131313;
+  font-size: 1.6rem;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+body.design-project .project-hero-nav:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+body.design-project .project-hero-nav.prev {
+  left: 3%;
+}
+
+body.design-project .project-hero-nav.next {
+  right: 3%;
+}
+
+body.design-project .project-back {
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+  body.design-project .project-hero {
+    min-height: 60vh;
+  }
+
+  body.design-project .project-hero-title {
+    font-size: clamp(2.25rem, 14vw, 4rem);
+  }
+
+  body.design-project .project-hero-imagewrap {
+    height: 82.67vw;
+    max-width: 90vw;
+  }
+
+  body.design-project .project-hero-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+
+  body.design-project .project-meta {
+    display: none;
+  }
+}

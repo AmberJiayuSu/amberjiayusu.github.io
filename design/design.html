@@ -33,13 +33,23 @@
         margin: 20px 0;
       }
 
-      .image-item {
+      .page_block .image-item {
         position: relative;
+        display: block;
         cursor: pointer;
         margin-bottom: 3em;
+        text-decoration: none;
+        color: inherit;
+        background-color: transparent;
       }
 
-      .image-item > img {
+      .page_block .image-item:hover {
+        color: inherit;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      .page_block .image-item > img {
         width: 100%;
         aspect-ratio: 3 / 1;
         object-fit: cover;
@@ -47,12 +57,8 @@
         transition: opacity 0.3s;
       }
 
-      .image-item:hover > img {
+      .page_block .image-item:hover > img {
         opacity: 0.1;
-      }
-
-      .image-item:onclick img {
-        opacity: 0.8;
       }
 
       .image-text {
@@ -67,108 +73,18 @@
         pointer-events: none;
       }
 
-      /* Popup modal (project-style) */
-      .design_popup {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(6px);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .design_popup .popup_content {
-        background: #ffffff;
-        padding: 10px;
-        width: 70%;
-        max-width: 1200px;
-        max-height: 90vh;
-        overflow: auto;
-        position: relative;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .design_popup .close-button {
-        border: none;
-        background-color: transparent;
-        color: black;
-        font-size: 1.5rem;
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .design_popup .close-button:hover {
-        background-color: #c9c9c9;
-      }
-
-      .design_popup .popup_text {
-        width: 87%;
-        padding: 10px;
-        flex-shrink: 0;
-        text-align: left;
-        margin-bottom: 1em;
-      }
-
-      .design_popup .popup_title {
-        margin-top: 1.5em;
-        font-size: 1.4em;
-        font-weight: 600;
-        margin-bottom: 0.8em;
-      }
-
-      .design_popup .popup_description {
-        font-size: 1em;
-        line-height: 1.25;
-        margin: 0;
-        font-weight: 200;
-        margin-bottom: 0.8em;
-      }
-
-      .design_popup .gallery-container {
-        width: 90%;
-        margin: 1em 0;
-      }
-
-      .design_popup .image-container {
-        width: 100%;
-      }
-
-      .design_popup .gallery-slide {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-
       @media (max-width: 768px) {
-        /* No hover dimming on touch — tapping goes straight to popup */
-        .image-item > img {
+        /* No hover dimming on touch — tapping goes straight through */
+        .page_block .image-item > img {
           opacity: 0.55;
         }
 
-        .image-item:hover > img {
+        .page_block .image-item:hover > img {
           opacity: 0.55;
         }
 
         .image-text {
           font-size: 20px;
-        }
-
-        .design_popup .popup_content {
-          width: 94%;
-          max-height: 88vh;
         }
       }
 
@@ -212,132 +128,36 @@
           <div class="image-list-container">
             <div class="image-list-subcontainer">
               <!-- Image and text -->
-              <div class="image-item">
-                <img src="./assets/3102.webp" class="clickable-image" data-modal="modal1">
+              <a class="image-item" href="./on-land.html">
+                <img src="./assets/3102.webp">
                 <div class="image-text">On Land</div>
-                <div id="modal1" class="design_popup">
-                  <div class="popup_content">
-                    <span class="close-button">&times;</span>
-                    <div class="gallery-container">
-                      <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                      <div class="image-container">
-                        <img class="gallery-slide" src="./assets/onland1.jpg"  style="display: block;">
-                        <img class="gallery-slide" src="./assets/onland2.jpg"  style="display: none;">
-                        <img class="gallery-slide" src="./assets/onland3.jpg"style="display: none;">
-                      </div>
-                      <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              </a>
 
               <!-- Image and text -->
-              <div class="image-item">
-                <img src="./assets/4102.webp" class="clickable-image" data-modal="modal2">
+              <a class="image-item" href="./down-the-road.html">
+                <img src="./assets/4102.webp">
                 <div class="image-text">Down the Road</div>
-                <div id="modal2" class="design_popup">
-                  <div class="popup_content">
-                    <span class="close-button">&times;</span>
-                    <div class="gallery-container">
-                      <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                      <div class="image-container">
-                        <img class="gallery-slide" src="./assets/DR1.jpg"  style="display: block;">
-                        <img class="gallery-slide" src="./assets/DR2.jpg" style="display: none;">
-                        <img class="gallery-slide" src="./assets/DR3.jpg" style="display: none;">
-                        <img class="gallery-slide" src="./assets/DR4.jpg" style="display: none;">
-                      </div>
-                      <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </a>
 
-
-
-              <div class="image-item">
-                <img src="./assets/integrative.webp" class="clickable-image" data-modal="modal3">
+              <a class="image-item" href="./continuing-horizon.html">
+                <img src="./assets/integrative.webp">
                 <div class="image-text">Continuing Horizon</div>
-                <div id="modal3" class="design_popup">
-                  <div class="popup_content">
-                    <span class="close-button">&times;</span>
-                    <div class="gallery-container">
-                      <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                      <div class="image-container">
-                        <img class="gallery-slide" src="./assets/ch1.jpg"  style="display: block;">
-                        <img class="gallery-slide" src="./assets/ch2.jpg" style="display: none;">
-                        <img class="gallery-slide" src="./assets/ch3.jpg" style="display: none;">
-                        <img class="gallery-slide" src="./assets/ch4.jpg" style="display: none;">
-                        <img class="gallery-slide" src="./assets/ch5.jpg" style="display: none;">
-                      </div>
-                      <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </a>
 
-
-
-
-
-              <div class="image-item">
-                <img src="./assets/corner.webp" class="clickable-image" data-modal="modal4">
+              <a class="image-item" href="./turning-the-corner.html">
+                <img src="./assets/corner.webp">
                 <div class="image-text">Turning the Corner</div>
-                <div id="modal4" class="design_popup">
-                  <div class="popup_content">
-                    <span class="close-button">&times;</span>
-                    <div class="gallery-container">
-                      <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                      <div class="image-container">
-                        <img class="gallery-slide" src="./assets/corner1.jpg"  style="display: block;">
-                        <img class="gallery-slide" src="./assets/corner2.jpg" style="display: none;">
-                      </div>
-                      <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </a>
 
-
-
-              <div class="image-item">
-                <img src="./assets/romeperspective.webp" class="clickable-image" data-modal="modal5">
+              <a class="image-item" href="./above-ground.html">
+                <img src="./assets/romeperspective.webp">
                 <div class="image-text">Above Ground</div>
-                <div id="modal5" class="design_popup">
-                  <div class="popup_content">
-                    <span class="close-button">&times;</span>
-                    <div class="gallery-container">
-                      <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                      <div class="image-container">
-                        <img class="gallery-slide" src="./assets/above.jpg"  style="display: block;">
-                      </div>
-                      <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </a>
 
-
-
-
-
-
-              <div class="image-item">
-                <img src="./assets/3101.webp" class="clickable-image" data-modal="modal6">
+              <a class="image-item" href="./in-absence.html">
+                <img src="./assets/3101.webp">
                 <div class="image-text">In Absence</div>
-                <div id="modal6" class="design_popup">
-                  <div class="popup_content">
-                    <span class="close-button">&times;</span>
-                    <div class="gallery-container">
-                      <button class="prev" onclick="changeSlide(-1,this)">&#10094;</button>
-                      <div class="image-container">
-                        <img class="gallery-slide" src="./assets/absence.jpg"  style="display: block;">
-                      </div>
-                      <button class="next" onclick="changeSlide(1,this)">&#10095;</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </a>
 
 
 
@@ -382,37 +202,6 @@
     
       </footer>
     </div>
-    
-    <script>
-      const images = document.querySelectorAll(".clickable-image");
-      const modals = document.querySelectorAll(".design_popup");
-
-      images.forEach((image) => {
-        image.addEventListener("click", () => {
-          const modalId = image.getAttribute("data-modal");
-          const modal = document.getElementById(modalId);
-          modal.style.display = "flex";
-        });
-      });
-
-      modals.forEach((modal) => {
-        const closeButton = modal.querySelector(".close-button");
-        closeButton.addEventListener("click", () => {
-          modal.style.display = "none";
-        });
-      });
-
-      window.addEventListener("click", (event) => {
-        modals.forEach((modal) => {
-          if (event.target === modal) {
-            modal.style.display = "none";
-          }
-        });
-      });
-    </script>
-
-
-
 
 
 
