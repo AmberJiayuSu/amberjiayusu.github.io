@@ -26,18 +26,23 @@
 
 <style>
   .project_gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 4%;
+    row-gap: 5em;
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 7em;
   }
 
   .project_item {
-    width: 22%; 
+    min-width: 0;
     text-align: center;
+    /* share row tracks with siblings so every image in a row starts at the same height */
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
   }
 
   .project_item img {
@@ -173,9 +178,45 @@
     transform: scale(1.05);
   }
 
+  .popup_fig {
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5em 0 1em 0;
+  }
+
+  .popup_pair {
+    width: 90%;
+    gap: 3%;
+    align-items: flex-start;
+  }
+
+  .popup_pair figure {
+    flex: 1 1 0;
+    margin: 0;
+    min-width: 0;
+  }
+
+  .popup_pair figure img {
+    width: 100%;
+  }
+
+  .popup_caption {
+    font-size: 0.85em;
+    font-weight: 200;
+    color: #555;
+    text-align: center;
+    margin-top: 0.3em;
+  }
+
   @media (max-width: 768px) {
-    .project_item {
-      width: 47%;
+    .project_gallery {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 3em;
+    }
+
+    .popup_pair {
+      flex-direction: column;
+      gap: 1em;
     }
 
     .popup_content {
@@ -186,8 +227,8 @@
   }
 
   @media (max-width: 480px) {
-    .project_item {
-      width: 100%;
+    .project_gallery {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -226,11 +267,221 @@
 
         <div  class = "page_block"> 
 
-          <!-- First Line -->
           <div class="project_gallery">
 
-            
-              <div class="project_item">
+            <div class="project_item">
+              <div class="project_text">
+                <h3 class="project_title">Load Shift Generation</h3>
+                <p class="project_description">Generative long-term building load forecasting under electrification</p>
+              </div>
+
+              <img src="./assets/loadshift-card.jpg" class="clickable-image" data-modal="modal10" alt="Flow vs. diffusion generated load shifts and framework overview"/>
+
+              <div id="modal10" class="project_popup">
+                <div class="popup_content">
+                  <span class="close-button">&times;</span>
+
+                  <div class="popup_text">
+                    <h3 class="popup_title">Long-Term Building Load Forecasting Under Distributional Shift</h3>
+                    <p class="popup_description">
+                      AI for Climate Action - <a href="./assets/ai4climate-final-report.pdf" target="_blank">Final Report</a><br>
+                      2026, 6.S893, MIT<br>
+                    </p>
+                    <p class="popup_description">
+                      Buildings account for roughly 31% of U.S. greenhouse gas emissions, and electrifying heating is a primary decarbonization strategy - but it will reshape electricity demand. ISO New England projects that by 2050 the peak may shift from a ~28 GW summer peak to a winter peak of up to 57 GW, with grid upgrades on the order of tens of billions of dollars. These projections are highly uncertain: adoption rates, upgrade pathways, and weather can produce very different outcomes.
+                    </p>
+                    <p class="popup_description">
+                      Physics-based simulation can model upgrade scenarios but needs detailed building inputs that are rarely available, while metered data is abundant but cannot say how demand will evolve under new conditions. This project bridges the two: a generative model <span style="font-weight: 400;">learns scenario-induced load shifts from simulation and applies them to observed load data</span>, producing diverse, plausible future demand scenarios for grid planning.
+                    </p>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/LS_peak_shift.png" alt="Projected ISO-NE summer and winter peak load in 2035, 2040, 2050" />
+                      <figcaption class="popup_caption">Projected ISO-NE peak load</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/LS_grid_cost.png" alt="Estimated grid upgrade costs" />
+                      <figcaption class="popup_caption">Estimated grid upgrade cost</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Framework</span> Paired baseline and post-upgrade load trajectories are generated with physics-based simulation (NREL ResStock). A conditional generative model learns the distribution of the load change, p(ΔY | Y<sub>base</sub>, X), conditioned on the baseline weekly load and temperature summaries. At deployment, the model takes observed current loads and samples future load scenarios directly.
+                    </p>
+                  </div>
+                  <figure class="popup_img popup_fig">
+                    <img src="./assets/LS_framework.png" alt="Framework: data preparation, model training, deployment" style="width: 75%;" />
+                    <figcaption class="popup_caption">Overview of the proposed methodology</figcaption>
+                  </figure>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Dataset</span> The de-risking experiment uses New England households with electricity and natural gas, under the "Cold Climate Ducted Air Source Heat Pump" upgrade. Weekly windows of 168 hourly readings are summed into groups of 10-150 buildings within a weather zone to reflect real feeder diversity. Each baseline week is paired with four different post-upgrade target weeks (one-to-many), giving 405 groups and 16,200 samples, split by group, plus an 800-building holdout set.
+                    </p>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/LS_summer_week.png" alt="Summer weekly loads for a 100-building group" />
+                      <figcaption class="popup_caption">Summer week - negligible change</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/LS_winter_week.png" alt="Winter weekly loads for a 100-building group" />
+                      <figcaption class="popup_caption">Winter week - electricity up, gas eliminated</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Generative Models</span> Both models share a backbone: a convolutional conditioning encoder (baseline curve + temperatures → c ∈ ℝ<sup>128</sup>) and an autoencoder that compresses the two-channel (electricity, gas) weekly load change into a 64-d latent. The autoencoder loss combines MAE with tail, weekly-sum, and ramp terms so it preserves the peaks, fuel-switching magnitude, and sharp transitions that matter for grid planning. In that latent space we compare a <span style="font-weight: 400;">conditional normalizing flow</span> (RealNVP, 8 affine coupling layers, exact likelihood) and a <span style="font-weight: 400;">conditional diffusion model</span> (DDPM with a denoising MLP, sampled with DDIM).
+                    </p>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/LS_flow_arch.png" alt="Normalizing flow architecture" />
+                      <figcaption class="popup_caption">Normalizing flow</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/LS_diffusion_arch.png" alt="Diffusion model architecture" />
+                      <figcaption class="popup_caption">Diffusion model</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Preliminary Results</span> Both models capture the expected heat-pump signature: higher electricity demand and lower natural gas use. The flow model gives lower ensemble-mean errors (e.g. net weekly electricity error 0.38 vs. 6.66 on the test set), while diffusion consistently produces more diverse samples and wider envelopes, especially for small 10-building groups - a trade-off between central accuracy and scenario coverage. Both degrade on unseen small groups (5 buildings) and unseen states (NY, SC), but extrapolate well to larger 200-building groups, where aggregation smooths per-building variability.
+                    </p>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/LS_samples_100.png" alt="Generated load shifts for a 100-building aggregate" />
+                      <figcaption class="popup_caption">100-building aggregate</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/LS_samples_10.png" alt="Generated load shifts for a 10-building aggregate" />
+                      <figcaption class="popup_caption">10-building aggregate</figcaption>
+                    </figure>
+                  </div>
+                  <figure class="popup_img popup_fig">
+                    <img src="./assets/LS_nll.png" alt="Mean NLL across aggregation sizes and splits" style="width: 75%;" />
+                    <figcaption class="popup_caption">Mean NLL across aggregation sizes and evaluation splits</figcaption>
+                  </figure>
+
+                  <div class="popup_text">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Next Steps</span> Expand beyond a single upgrade scenario with a compositional scenario encoding (HVAC, envelope, water heating, EV, demand flexibility, adoption rate), re-simulate with projected future weather, calibrate against metered data, and evaluate how probabilistic scenarios affect peak capacity, grid investment, and retrofit policy decisions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project_item">
+              <div class="project_text">
+                <h3 class="project_title">Bayesian Load Forecasting</h3>
+                <p class="project_description">Prophet vs. BSTS for commercial building electricity demand</p>
+              </div>
+
+              <img src="./assets/bayesian-card.jpg" class="clickable-image" data-modal="modal11" alt="BSTS forecasts and MAPE comparison between Prophet and BSTS"/>
+
+              <div id="modal11" class="project_popup">
+                <div class="popup_content">
+                  <span class="close-button">&times;</span>
+
+                  <div class="popup_text">
+                    <h3 class="popup_title">Bayesian Forecasting of Commercial Building Electricity Demand</h3>
+                    <p class="popup_description">
+                      Bayesian Modeling and Inference - <a href="./assets/bayesian-modeling-final-report.pdf" target="_blank">Final Report</a><br>
+                      2026, 6.7830, MIT<br>
+                    </p>
+                    <p class="popup_description">
+                      Short-term commercial building load forecasting supports grid planning, peak management, and demand response. Building demand has clear temporal structure but is inherently uncertain. This project studies how modeling assumptions, inference algorithms, and specification choices affect posterior inference and forecasts, using 8 buildings from the Building Data Genome Project 2 chosen to range from stable, well-structured series to noisy series with abrupt shifts.
+                    </p>
+                    <p class="popup_description">
+                      Two models with different inductive biases are compared. <span style="font-weight: 400;">Prophet</span> assumes a stable piecewise-linear trend with fixed Fourier seasonality (fit here with full posterior inference rather than MAP). <span style="font-weight: 400;">Bayesian Structural Time Series (BSTS)</span> treats trend and daily/weekly seasonality as time-evolving latent states; a Kalman filter integrates over the latent trajectories, so inference only targets the variance parameters.
+                    </p>
+                  </div>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Step 1 - Forecast Accuracy Across Buildings and Horizons</span> Both models are fit with ADVI and evaluated with 7-fold rolling-origin validation at 6-hour to 5-day horizons. Prophet stays stable across horizons (median MAPE ~10%) with a nearly flat prediction interval, but varies widely between buildings. BSTS is better at short horizons (~6% median MAPE at 6 hours) but degrades as the horizon grows, and its 90% prediction interval widens quickly as uncertainty builds up in the drifting latent states. Regular buildings such as Hog_office are easy for both models; on irregular buildings, BSTS has a large short-horizon advantage that narrows over longer horizons.
+                    </p>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/BF_mape_horizon.png" alt="MAPE by forecast horizon" />
+                      <figcaption class="popup_caption">MAPE by forecast horizon</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/BF_pi_width.png" alt="Normalized 90% prediction interval width by lead time" />
+                      <figcaption class="popup_caption">Normalized 90% PI width by lead time</figcaption>
+                    </figure>
+                  </div>
+                  <figure class="popup_img popup_fig">
+                    <img src="./assets/BF_mape_heatmap.png" alt="MAPE by building, model, and horizon" style="width: 75%;" />
+                    <figcaption class="popup_caption">MAPE (%) by building, model, and horizon</figcaption>
+                  </figure>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Step 2 - Inference: ADVI vs. NUTS</span> Good forecasts don't guarantee a reliable posterior, so ADVI (including a longer run) and NUTS are compared on a regular and an irregular building. For Prophet, ADVI and NUTS agree, so performance is limited by model structure rather than inference. BSTS can fit the training curve almost perfectly, but the methods find noticeably different variance posteriors that explain the past equally well while implying different futures. This is weak identifiability: a spike can be read as noise, seasonal drift, or trend movement. Running more NUTS chains did not help and sometimes made forecasts worse.
+                    </p>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/BF_fit_0.png" alt="Prophet fit on regular building" />
+                      <figcaption class="popup_caption">Prophet - regular building</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/BF_fit_1.png" alt="BSTS fit on regular building" />
+                      <figcaption class="popup_caption">BSTS - regular building</figcaption>
+                    </figure>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/BF_fit_2.png" alt="Prophet fit on irregular building" />
+                      <figcaption class="popup_caption">Prophet - irregular building</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/BF_fit_3.png" alt="BSTS fit on irregular building" />
+                      <figcaption class="popup_caption">BSTS - irregular building</figcaption>
+                    </figure>
+                  </div>
+                  <div class="popup_img popup_pair">
+                    <figure>
+                      <img src="./assets/BF_posterior_2.png" alt="Prophet parameter posteriors, irregular building" />
+                      <figcaption class="popup_caption">Prophet posteriors - irregular building</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="./assets/BF_posterior_3.png" alt="BSTS parameter posteriors, irregular building" />
+                      <figcaption class="popup_caption">BSTS posteriors - irregular building</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="popup_text" style="margin-bottom: 0em;">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Step 3 - Decomposition as an Output</span> The posterior decomposition is a result in its own right. Prophet extracts a clean, interpretable structure (a nearly flat trend with repeating weekly and daily patterns) even when it can't explain the irregularities. BSTS adapts more, but ADVI and NUTS split local variation across components differently, which shows how much of the load behavior remains unexplained. The models don't just predict the future; they impose different explanations of the past.
+                    </p>
+                  </div>
+                  <figure class="popup_img popup_fig">
+                    <img src="./assets/BF_decomp_prophet.png" alt="Prophet component decomposition, irregular building" style="width: 90%;" />
+                    <figcaption class="popup_caption">Prophet decomposition - irregular building</figcaption>
+                  </figure>
+                  <figure class="popup_img popup_fig">
+                    <img src="./assets/BF_decomp_bsts.png" alt="BSTS component decomposition, irregular building" style="width: 90%;" />
+                    <figcaption class="popup_caption">BSTS decomposition - irregular building</figcaption>
+                  </figure>
+
+                  <div class="popup_text">
+                    <p class="popup_description">
+                      <span style="font-weight: 400;">Takeaway</span> Bayesian load forecasting is a problem of trade-offs. Prophet is stable and interpretable when patterns are regular; BSTS adapts better but is sensitive to uncertainty accumulation and weak identifiability. More flexibility or more exhaustive inference does not necessarily improve the forecast. The right choice depends on whether stability, adaptivity, uncertainty, or interpretability matters most.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">PointPROP</h3>
                 <p class="project_description">DL-based surrogate model for point cloud occulusion testing</p>
@@ -311,7 +562,7 @@
               </div>
             </div>
 
-              <div class="project_item">
+            <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">Bluebike Rebalancing</h3>
                 <p class="project_description">Multi-stage mixed-integer bike system optimization</p>
@@ -358,7 +609,6 @@
               </div>
             </div>
 
-
             <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">Weather Analysis</h3>
@@ -394,7 +644,6 @@
               </div>
             </div>
 
-            <!-- Second Item -->
             <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">CBECS | RECS Dashboard</h3>
@@ -430,9 +679,6 @@
                 </div>
               </div>
             </div>
-            </div>
-
-            <div class="project_gallery">
 
             <div class="project_item">
               <div class="project_text">
@@ -485,7 +731,6 @@
               </div>
             </div>
 
-
             <div class="project_item">
               <div class="project_text">
                 <h3 class="project_title">Personal Website</h3>
@@ -519,8 +764,7 @@
               </div>
             </div>
 
-
-          <div class="project_item">
+            <div class="project_item">
             <div class="project_text">
               <h3 class="project_title">Plan Gen</h3>
               <p class="project_description"> Rule-based architecture floor plan generator</p>
@@ -558,7 +802,7 @@
             </div>
           </div>
 
-          <div class="project_item">
+            <div class="project_item">
             <div class="project_text">
               <h3 class="project_title">Pomopals</h3>
               <p class="project_description">Productive and social web app</p>
@@ -592,23 +836,8 @@
               </div>
             </div>
           </div>
-    
-          </div>
 
-
-
-        <!-- Second Line -->
-        <div class="project_gallery">
-
-         
-
-          <!-- Second Item -->
-          
-
-
-
-          <!-- Third Item -->
-          <div class="project_item">
+            <div class="project_item">
             <div class="project_text">
               <h3 class="project_title">Water Chandelier</h3>
               <p class="project_description">Tallinn Architecture Biennale, 2022</p>
@@ -646,10 +875,7 @@
             </div>
           </div>
 
-         
-        
-  
-        </div>
+          </div>
 
 
        
